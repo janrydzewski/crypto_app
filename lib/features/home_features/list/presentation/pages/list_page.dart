@@ -1,3 +1,5 @@
+import 'package:crypto_app/features/home_features/list/presentation/widgets/crypto_listview_widget.dart';
+import 'package:crypto_app/shared/widgets/crypto_scaffold_widget.dart';
 import 'package:flutter/material.dart';
 
 class ListPage extends StatelessWidget {
@@ -10,13 +12,14 @@ class ListPage extends StatelessWidget {
 }
 
 class _ListView extends StatelessWidget {
-  const _ListView({super.key});
+  const _ListView();
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text("List"),
+    return const CryptoScaffold.title(
+      title: "Cryptocurrency List",
+      body: SingleChildScrollView(
+        child: CryptoListViewWidget(),
       ),
     );
   }

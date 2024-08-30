@@ -24,6 +24,7 @@ dependencies:
   injectable_generator: ^2.6.2
   equatable: ^2.0.5
   flutter_svg: ^2.0.10+1
+  json_serializable: ^6.8.0
 
 dev_dependencies:
   flutter_test:
