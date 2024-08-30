@@ -1,4 +1,5 @@
 import 'package:crypto_app/core/router/router.dart';
+import 'package:crypto_app/core/theme/theme.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,10 +13,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       title: 'Crypto App',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+      theme: const MaterialTheme().light(),
+      darkTheme: const MaterialTheme().dark(),
+      themeMode: ThemeMode.system,
       routerConfig: router,
     );
   }
