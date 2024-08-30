@@ -1,8 +1,15 @@
+import 'package:bloc/bloc.dart';
+import 'package:crypto_app/core/addons/bloc_observer.dart';
+import 'package:crypto_app/core/di/injectable_config.dart';
 import 'package:crypto_app/core/router/router.dart';
 import 'package:crypto_app/core/theme/theme.dart';
 import 'package:flutter/material.dart';
 
 void main() {
+  Bloc.observer = CustomBlocObserver();
+
+  configureDependencies();
+
   runApp(const MyApp());
 }
 

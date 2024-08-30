@@ -4,7 +4,8 @@ import 'package:crypto_app/features/home_features/list/domain/entities/crypto_en
 import 'package:flutter/material.dart';
 
 class CryptoListViewWidget extends StatelessWidget {
-  const CryptoListViewWidget({super.key});
+  final List<CryptoEntity> cryptoList;
+  const CryptoListViewWidget({super.key, required this.cryptoList});
 
   @override
   Widget build(BuildContext context) {
@@ -13,10 +14,9 @@ class CryptoListViewWidget extends StatelessWidget {
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
         itemBuilder: (context, index) {
-          final model = CryptoEntity.example();
-          return _ListViewElementWidget(crypto: model);
+          return _ListViewElementWidget(crypto: cryptoList[index]);
         },
-        itemCount: 50);
+        itemCount: cryptoList.length);
   }
 }
 
@@ -53,7 +53,7 @@ class _ListViewElementWidget extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    Text("${crypto.currentPrice.toStringAsFixed(0)}\$",
+                    Text("${crypto.currentPrice.toStringAsFixed(2)}\$",
                         style: context.titleLarge),
                     Text(
                       "${crypto.priceChangePercentage.toStringAsFixed(2)}%",

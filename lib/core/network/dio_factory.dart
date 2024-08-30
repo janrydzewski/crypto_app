@@ -16,6 +16,8 @@ abstract class DioFactory {
 
   Future<Map<String, dynamic>> get(String route,
       {Map<String, dynamic>? queryParameters});
+  Future<List<dynamic>> getList(String route,
+      {Map<String, dynamic>? queryParameters});
 }
 
 @LazySingleton(as: DioFactory)
@@ -40,6 +42,25 @@ class DioFactoryImpl extends DioFactory {
 
   @override
   Future<Map<String, dynamic>> get(
+    String route, {
+    Map<String, dynamic>? queryParameters,
+    Map<String, dynamic>? headers,
+  }) async {
+    try {
+      final result = await _dio.get(
+        route,
+        queryParameters: queryParameters,
+        options: Options(headers: headers),
+      );
+
+      return result.data;
+    } catch (e) {
+      throw Exception(e);
+    }
+  }
+
+  @override
+  Future<List<dynamic>> getList(
     String route, {
     Map<String, dynamic>? queryParameters,
     Map<String, dynamic>? headers,
