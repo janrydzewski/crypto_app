@@ -12,9 +12,15 @@ class InfoWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        const SizedBox(
+          height: 20,
+        ),
         ChartWidget(
           prices: prices,
           isLoaded: isLoaded,
+        ),
+        const SizedBox(
+          height: 40,
         ),
         const PickIntervalWidget(),
       ],

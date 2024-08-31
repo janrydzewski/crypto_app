@@ -2,11 +2,11 @@ import 'package:crypto_app/core/constants/constants.dart';
 import 'package:flutter/material.dart';
 
 class MarginsK extends Constants {
+  static const t30 = EdgeInsets.only(top: 30);
 
   static const a10 = EdgeInsets.all(10);
 
   static const h10 = EdgeInsets.symmetric(horizontal: 10);
-  
 
   static const v10 = EdgeInsets.symmetric(vertical: 10);
 

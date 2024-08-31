@@ -24,7 +24,6 @@ mixin _$CryptoDetailsEntity {
   String get symbol => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   ImageEntity get image => throw _privateConstructorUsedError;
-  LinksEntity get links => throw _privateConstructorUsedError;
   @JsonKey(name: 'market_data')
   MarketDataEntity get marketData => throw _privateConstructorUsedError;
 
@@ -45,11 +44,9 @@ abstract class $CryptoDetailsEntityCopyWith<$Res> {
       String symbol,
       String name,
       ImageEntity image,
-      LinksEntity links,
       @JsonKey(name: 'market_data') MarketDataEntity marketData});
 
   $ImageEntityCopyWith<$Res> get image;
-  $LinksEntityCopyWith<$Res> get links;
   $MarketDataEntityCopyWith<$Res> get marketData;
 }
 
@@ -70,7 +67,6 @@ class _$CryptoDetailsEntityCopyWithImpl<$Res, $Val extends CryptoDetailsEntity>
     Object? symbol = null,
     Object? name = null,
     Object? image = null,
-    Object? links = null,
     Object? marketData = null,
   }) {
     return _then(_value.copyWith(
@@ -90,10 +86,6 @@ class _$CryptoDetailsEntityCopyWithImpl<$Res, $Val extends CryptoDetailsEntity>
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as ImageEntity,
-      links: null == links
-          ? _value.links
-          : links // ignore: cast_nullable_to_non_nullable
-              as LinksEntity,
       marketData: null == marketData
           ? _value.marketData
           : marketData // ignore: cast_nullable_to_non_nullable
@@ -106,14 +98,6 @@ class _$CryptoDetailsEntityCopyWithImpl<$Res, $Val extends CryptoDetailsEntity>
   $ImageEntityCopyWith<$Res> get image {
     return $ImageEntityCopyWith<$Res>(_value.image, (value) {
       return _then(_value.copyWith(image: value) as $Val);
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $LinksEntityCopyWith<$Res> get links {
-    return $LinksEntityCopyWith<$Res>(_value.links, (value) {
-      return _then(_value.copyWith(links: value) as $Val);
     });
   }
 
@@ -139,13 +123,10 @@ abstract class _$$CryptoDetailsEntityImplCopyWith<$Res>
       String symbol,
       String name,
       ImageEntity image,
-      LinksEntity links,
       @JsonKey(name: 'market_data') MarketDataEntity marketData});
 
   @override
   $ImageEntityCopyWith<$Res> get image;
-  @override
-  $LinksEntityCopyWith<$Res> get links;
   @override
   $MarketDataEntityCopyWith<$Res> get marketData;
 }
@@ -165,7 +146,6 @@ class __$$CryptoDetailsEntityImplCopyWithImpl<$Res>
     Object? symbol = null,
     Object? name = null,
     Object? image = null,
-    Object? links = null,
     Object? marketData = null,
   }) {
     return _then(_$CryptoDetailsEntityImpl(
@@ -185,10 +165,6 @@ class __$$CryptoDetailsEntityImplCopyWithImpl<$Res>
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as ImageEntity,
-      links: null == links
-          ? _value.links
-          : links // ignore: cast_nullable_to_non_nullable
-              as LinksEntity,
       marketData: null == marketData
           ? _value.marketData
           : marketData // ignore: cast_nullable_to_non_nullable
@@ -205,7 +181,6 @@ class _$CryptoDetailsEntityImpl implements _CryptoDetailsEntity {
       required this.symbol,
       required this.name,
       required this.image,
-      required this.links,
       @JsonKey(name: 'market_data') required this.marketData});
 
   factory _$CryptoDetailsEntityImpl.fromJson(Map<String, dynamic> json) =>
@@ -220,14 +195,12 @@ class _$CryptoDetailsEntityImpl implements _CryptoDetailsEntity {
   @override
   final ImageEntity image;
   @override
-  final LinksEntity links;
-  @override
   @JsonKey(name: 'market_data')
   final MarketDataEntity marketData;
 
   @override
   String toString() {
-    return 'CryptoDetailsEntity(id: $id, symbol: $symbol, name: $name, image: $image, links: $links, marketData: $marketData)';
+    return 'CryptoDetailsEntity(id: $id, symbol: $symbol, name: $name, image: $image, marketData: $marketData)';
   }
 
   @override
@@ -239,7 +212,6 @@ class _$CryptoDetailsEntityImpl implements _CryptoDetailsEntity {
             (identical(other.symbol, symbol) || other.symbol == symbol) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.image, image) || other.image == image) &&
-            (identical(other.links, links) || other.links == links) &&
             (identical(other.marketData, marketData) ||
                 other.marketData == marketData));
   }
@@ -247,7 +219,7 @@ class _$CryptoDetailsEntityImpl implements _CryptoDetailsEntity {
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, id, symbol, name, image, links, marketData);
+      Object.hash(runtimeType, id, symbol, name, image, marketData);
 
   @JsonKey(ignore: true)
   @override
@@ -270,7 +242,6 @@ abstract class _CryptoDetailsEntity implements CryptoDetailsEntity {
       required final String symbol,
       required final String name,
       required final ImageEntity image,
-      required final LinksEntity links,
       @JsonKey(name: 'market_data')
       required final MarketDataEntity marketData}) = _$CryptoDetailsEntityImpl;
 
@@ -285,8 +256,6 @@ abstract class _CryptoDetailsEntity implements CryptoDetailsEntity {
   String get name;
   @override
   ImageEntity get image;
-  @override
-  LinksEntity get links;
   @override
   @JsonKey(name: 'market_data')
   MarketDataEntity get marketData;

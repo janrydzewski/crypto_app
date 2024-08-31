@@ -1,7 +1,6 @@
 // ignore_for_file: invalid_annotation_target
 
 import 'package:crypto_app/features/home_features/crypto_details/domain/entities/childs/image_entity.dart';
-import 'package:crypto_app/features/home_features/crypto_details/domain/entities/childs/links_entity.dart';
 import 'package:crypto_app/features/home_features/crypto_details/domain/entities/childs/market_data_entity.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -15,7 +14,6 @@ class CryptoDetailsEntity with _$CryptoDetailsEntity {
     required String symbol,
     required String name,
     required ImageEntity image,
-    required LinksEntity links,
     @JsonKey(name: 'market_data') required MarketDataEntity marketData,
   }) = _CryptoDetailsEntity;
 
@@ -30,7 +28,6 @@ class CryptoDetailsEntity with _$CryptoDetailsEntity {
                 "https://assets.coingecko.com/coins/images/1/small/bitcoin.png?1696501400",
             large:
                 "https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1696501400"),
-        links: LinksEntity(blockchainSite: []),
         marketData: MarketDataEntity(
           priceChange24h: 5.5,
           priceChangePercentage24h: 0,

@@ -13,7 +13,6 @@ _$CryptoDetailsEntityImpl _$$CryptoDetailsEntityImplFromJson(
       symbol: json['symbol'] as String,
       name: json['name'] as String,
       image: ImageEntity.fromJson(json['image'] as Map<String, dynamic>),
-      links: LinksEntity.fromJson(json['links'] as Map<String, dynamic>),
       marketData: MarketDataEntity.fromJson(
           json['market_data'] as Map<String, dynamic>),
     );
@@ -25,6 +24,5 @@ Map<String, dynamic> _$$CryptoDetailsEntityImplToJson(
       'symbol': instance.symbol,
       'name': instance.name,
       'image': instance.image,
-      'links': instance.links,
       'market_data': instance.marketData,
     };
