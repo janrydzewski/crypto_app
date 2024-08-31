@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 
 class InfoWidget extends StatelessWidget {
   final PricesEntity prices;
-  const InfoWidget({super.key, required this.prices});
+  final bool isLoaded;
+  const InfoWidget({super.key, required this.prices, required this.isLoaded});
 
   @override
   Widget build(BuildContext context) {
@@ -13,6 +14,7 @@ class InfoWidget extends StatelessWidget {
       children: [
         ChartWidget(
           prices: prices,
+          isLoaded: isLoaded,
         ),
         const PickIntervalWidget(),
       ],

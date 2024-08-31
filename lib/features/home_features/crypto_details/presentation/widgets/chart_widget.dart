@@ -3,15 +3,11 @@ import 'package:crypto_app/features/home_features/crypto_details/domain/entities
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
-class ChartWidget extends StatefulWidget {
+class ChartWidget extends StatelessWidget {
   final PricesEntity prices;
-  const ChartWidget({super.key, required this.prices});
+  final bool isLoaded;
+  const ChartWidget({super.key, required this.prices, required this.isLoaded});
 
-  @override
-  State<ChartWidget> createState() => _LineChartSample2State();
-}
-
-class _LineChartSample2State extends State<ChartWidget> {
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
@@ -24,13 +20,15 @@ class _LineChartSample2State extends State<ChartWidget> {
           bottom: 24,
         ),
         child: LineChart(
-          mainData(),
+          mainData(prices.prices, context, isLoaded),
+          duration: const Duration(seconds: 2),
         ),
       ),
     );
   }
 
-  LineChartData mainData() {
+  LineChartData mainData(
+      final List<List<double>> prices, BuildContext context, bool isLoaded) {
     return LineChartData(
       gridData: const FlGridData(
         show: false,
@@ -53,12 +51,12 @@ class _LineChartSample2State extends State<ChartWidget> {
         handleBuiltInTouches: true,
       ),
       minX: 0,
-      maxX: widget.prices.prices.length.toDouble() - 1,
+      maxX: prices.length.toDouble() - 1,
       minY: getMinY.toDouble(),
-      maxY: getMaxY.toDouble(),
+      maxY: isLoaded ? getMaxY.toDouble() : 10,
       lineBarsData: [
         LineChartBarData(
-          spots: widget.prices.prices.asMap().entries.map((entry) {
+          spots: prices.asMap().entries.map((entry) {
             int index = entry.key;
             List<double> e = entry.value;
             return FlSpot(index.toDouble(), e[1]);
@@ -92,28 +90,28 @@ class _LineChartSample2State extends State<ChartWidget> {
   }
 
   int get getMinX {
-    return widget.prices.prices
+    return prices.prices
         .map((e) => e[0])
         .reduce((a, b) => a < b ? a : b)
         .toInt();
   }
 
   int get getMaxX {
-    return widget.prices.prices
+    return prices.prices
         .map((e) => e[0])
         .reduce((a, b) => a > b ? a : b)
         .toInt();
   }
 
   int get getMinY {
-    return widget.prices.prices
+    return prices.prices
         .map((e) => e[1])
         .reduce((a, b) => a < b ? a : b)
         .toInt();
   }
 
   int get getMaxY {
-    return widget.prices.prices
+    return prices.prices
         .map((e) => e[1])
         .reduce((a, b) => a > b ? a : b)
         .toInt();

@@ -1,5 +1,6 @@
 import 'package:crypto_app/core/di/injectable_config.dart';
 import 'package:crypto_app/features/home_features/crypto_details/domain/entities/crypto_details_entity.dart';
+import 'package:crypto_app/features/home_features/crypto_details/domain/entities/prices_entity.dart';
 import 'package:crypto_app/features/home_features/crypto_details/presentation/bloc/chart/chart_bloc.dart';
 import 'package:crypto_app/features/home_features/crypto_details/presentation/bloc/crypto_details/crypto_details_bloc.dart';
 import 'package:crypto_app/features/home_features/crypto_details/presentation/bloc/interval/interval_bloc.dart';
@@ -58,7 +59,11 @@ class _DetailsView extends StatelessWidget {
     return BlocBuilder<CryptoDetailsBloc, CryptoDetailsState>(
       builder: (context, state) {
         return state.when(
-          initial: () => const LoadingWidget(),
+          initial: () => Skeletonizer(
+            child: DetailsWidget(
+              cryptoDetails: CryptoDetailsEntity.example(),
+            ),
+          ),
           loading: () => Skeletonizer(
             child: DetailsWidget(
               cryptoDetails: CryptoDetailsEntity.example(),
@@ -78,9 +83,13 @@ class _DetailsView extends StatelessWidget {
       builder: (context, state) {
         return state.when(
           initial: () => const LoadingWidget(),
-          loading: () => const LoadingWidget(),
+          loading: () => InfoWidget(
+            prices: PricesEntity.example(),
+            isLoaded: false,
+          ),
           data: (prices) => InfoWidget(
             prices: prices,
+            isLoaded: true,
           ),
           failure: (failure) => CustomErrorWidget(failure: failure),
         );
