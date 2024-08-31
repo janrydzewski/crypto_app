@@ -15,7 +15,7 @@ class ListPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) =>
-          ListBloc(locator())..add(const ListEvent.getCryptoList()),
+          ListBloc(locator())..add(ListEvent.getCryptoList(pageKey: 1)),
       child: const _ListView(),
     );
   }

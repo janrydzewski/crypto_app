@@ -1,11 +1,40 @@
+import 'package:crypto_app/core/addons/global.dart';
 import 'package:crypto_app/core/constants/margins.dart';
 import 'package:crypto_app/core/extenstions/style_extenstion.dart';
 import 'package:crypto_app/features/home_features/list/domain/entities/crypto_entity.dart';
+import 'package:crypto_app/features/home_features/list/presentation/bloc/list_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
-class CryptoListViewWidget extends StatelessWidget {
+class CryptoListViewWidget extends StatefulWidget {
   final List<CryptoEntity> cryptoList;
   const CryptoListViewWidget({super.key, required this.cryptoList});
+
+  @override
+  State<CryptoListViewWidget> createState() => _CryptoListViewWidgetState();
+}
+
+class _CryptoListViewWidgetState extends State<CryptoListViewWidget> {
+  int pageKey = 1;
+
+  @override
+  void initState() {
+    Global.scrollController!.addListener(() {
+      final maxScroll = Global.scrollController!.position.maxScrollExtent;
+      final currentScroll = Global.scrollController!.offset;
+      final isLast = currentScroll >= maxScroll;
+
+      if (isLast) {
+        setState(() {
+          pageKey++;
+        });
+        context.read<ListBloc>().add(ListEvent.getCryptoList(pageKey: pageKey));
+      }
+    });
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -15,9 +44,11 @@ class CryptoListViewWidget extends StatelessWidget {
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
           itemBuilder: (context, index) {
-            return _ListViewElementWidget(crypto: cryptoList[index]);
+            return index >= widget.cryptoList.length - 1
+                ? const _LoadingWidget()
+                : _ListViewElementWidget(crypto: widget.cryptoList[index]);
           },
-          itemCount: cryptoList.length),
+          itemCount: widget.cryptoList.length),
     );
   }
 }
@@ -68,6 +99,20 @@ class _ListViewElementWidget extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+class _LoadingWidget extends StatelessWidget {
+  const _LoadingWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: MarginsK.v10,
+      child: Center(
+          child: LoadingAnimationWidget.threeArchedCircle(
+              color: context.primaryColor, size: 30)),
     );
   }
 }

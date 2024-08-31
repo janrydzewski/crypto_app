@@ -16,19 +16,20 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ListEvent {
+  int get pageKey => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getCryptoList,
+    required TResult Function(int pageKey) getCryptoList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getCryptoList,
+    TResult? Function(int pageKey)? getCryptoList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getCryptoList,
+    TResult Function(int pageKey)? getCryptoList,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -48,12 +49,18 @@ mixin _$ListEvent {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $ListEventCopyWith<ListEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $ListEventCopyWith<$Res> {
   factory $ListEventCopyWith(ListEvent value, $Res Function(ListEvent) then) =
       _$ListEventCopyWithImpl<$Res, ListEvent>;
+  @useResult
+  $Res call({int pageKey});
 }
 
 /// @nodoc
@@ -65,13 +72,30 @@ class _$ListEventCopyWithImpl<$Res, $Val extends ListEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? pageKey = null,
+  }) {
+    return _then(_value.copyWith(
+      pageKey: null == pageKey
+          ? _value.pageKey
+          : pageKey // ignore: cast_nullable_to_non_nullable
+              as int,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$GetCryptoListImplCopyWith<$Res> {
+abstract class _$$GetCryptoListImplCopyWith<$Res>
+    implements $ListEventCopyWith<$Res> {
   factory _$$GetCryptoListImplCopyWith(
           _$GetCryptoListImpl value, $Res Function(_$GetCryptoListImpl) then) =
       __$$GetCryptoListImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({int pageKey});
 }
 
 /// @nodoc
@@ -81,51 +105,75 @@ class __$$GetCryptoListImplCopyWithImpl<$Res>
   __$$GetCryptoListImplCopyWithImpl(
       _$GetCryptoListImpl _value, $Res Function(_$GetCryptoListImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? pageKey = null,
+  }) {
+    return _then(_$GetCryptoListImpl(
+      pageKey: null == pageKey
+          ? _value.pageKey
+          : pageKey // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$GetCryptoListImpl implements _GetCryptoList {
-  const _$GetCryptoListImpl();
+  const _$GetCryptoListImpl({required this.pageKey});
+
+  @override
+  final int pageKey;
 
   @override
   String toString() {
-    return 'ListEvent.getCryptoList()';
+    return 'ListEvent.getCryptoList(pageKey: $pageKey)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$GetCryptoListImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$GetCryptoListImpl &&
+            (identical(other.pageKey, pageKey) || other.pageKey == pageKey));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, pageKey);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetCryptoListImplCopyWith<_$GetCryptoListImpl> get copyWith =>
+      __$$GetCryptoListImplCopyWithImpl<_$GetCryptoListImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getCryptoList,
+    required TResult Function(int pageKey) getCryptoList,
   }) {
-    return getCryptoList();
+    return getCryptoList(pageKey);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getCryptoList,
+    TResult? Function(int pageKey)? getCryptoList,
   }) {
-    return getCryptoList?.call();
+    return getCryptoList?.call(pageKey);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getCryptoList,
+    TResult Function(int pageKey)? getCryptoList,
     required TResult orElse(),
   }) {
     if (getCryptoList != null) {
-      return getCryptoList();
+      return getCryptoList(pageKey);
     }
     return orElse();
   }
@@ -160,7 +208,15 @@ class _$GetCryptoListImpl implements _GetCryptoList {
 }
 
 abstract class _GetCryptoList implements ListEvent {
-  const factory _GetCryptoList() = _$GetCryptoListImpl;
+  const factory _GetCryptoList({required final int pageKey}) =
+      _$GetCryptoListImpl;
+
+  @override
+  int get pageKey;
+  @override
+  @JsonKey(ignore: true)
+  _$$GetCryptoListImplCopyWith<_$GetCryptoListImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc

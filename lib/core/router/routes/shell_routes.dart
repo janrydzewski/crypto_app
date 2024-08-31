@@ -1,3 +1,4 @@
+import 'package:crypto_app/core/addons/global.dart';
 import 'package:crypto_app/core/router/router.dart';
 import 'package:crypto_app/core/router/routes.dart';
 import 'package:crypto_app/features/home_features/home/presentation/pages/home_page.dart';
@@ -11,9 +12,12 @@ final listNavigatorKey = GlobalKey<NavigatorState>();
 
 final StatefulShellRoute shellRoutes = StatefulShellRoute.indexedStack(
   parentNavigatorKey: rootNavigatorKey,
-  builder: (context, state, navigationShell) => RootPage(
-    navigationShell: navigationShell,
-  ),
+  builder: (context, state, navigationShell) {
+    Global.scrollController ??= ScrollController();
+    return RootPage(
+      navigationShell: navigationShell,
+    );
+  },
   branches: [
     homeBranches,
     listBranches,

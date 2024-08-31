@@ -1,3 +1,4 @@
+import 'package:crypto_app/core/addons/global.dart';
 import 'package:flutter/material.dart';
 
 class CryptoScaffold extends StatelessWidget {
@@ -58,6 +59,7 @@ class CryptoScaffold extends StatelessWidget {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: CustomScrollView(
+        controller: Global.scrollController,
         physics: const ClampingScrollPhysics(),
         slivers: [
           buildAppbar(context),

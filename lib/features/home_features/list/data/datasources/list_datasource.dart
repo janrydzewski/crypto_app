@@ -4,7 +4,7 @@ import 'package:crypto_app/features/home_features/list/domain/entities/crypto_en
 import 'package:injectable/injectable.dart';
 
 abstract class ListDatasource {
-  Future<List<CryptoEntity>> getCryptoList();
+  Future<List<CryptoEntity>> getCryptoList(int pageKey, int pageSize);
 }
 
 @LazySingleton(as: ListDatasource)
@@ -14,11 +14,13 @@ class ListDatasourceImpl implements ListDatasource {
   ListDatasourceImpl({required this.dioFactory});
 
   @override
-  Future<List<CryptoEntity>> getCryptoList() async {
+  Future<List<CryptoEntity>> getCryptoList(int pageKey, int pageSize) async {
     try {
       final response =
           await dioFactory.getList(ApiRoutesK.cryptoList, queryParameters: {
         'vs_currency': 'usd',
+        'page': pageKey,
+        'per_page': pageSize,
       });
       return (response).map((e) => CryptoEntity.fromJson(e)).toList();
     } catch (e, st) {

@@ -5,7 +5,8 @@ import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 
 abstract class ListRepository {
-  Future<Either<Failure, List<CryptoEntity>>> getCryptoList();
+  Future<Either<Failure, List<CryptoEntity>>> getCryptoList(
+      int pageKey, int pageSize);
 }
 
 @LazySingleton(as: ListRepository)
@@ -15,9 +16,10 @@ class ListRepositoryImpl extends ListRepository {
   ListRepositoryImpl({required this.listDatasource});
 
   @override
-  Future<Either<Failure, List<CryptoEntity>>> getCryptoList() async {
+  Future<Either<Failure, List<CryptoEntity>>> getCryptoList(
+      int pageKey, int pageSize) async {
     try {
-      final response = await listDatasource.getCryptoList();
+      final response = await listDatasource.getCryptoList(pageKey, pageSize);
       return Right(response);
     } catch (e) {
       return Left(Failure.fromException(e));
