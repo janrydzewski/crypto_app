@@ -20,7 +20,7 @@ class ListRepositoryImpl extends ListRepository {
       final response = await listDatasource.getCryptoList();
       return Right(response);
     } catch (e) {
-      throw Exception(e);
+      return Left(Failure.fromException(e));
     }
   }
 }

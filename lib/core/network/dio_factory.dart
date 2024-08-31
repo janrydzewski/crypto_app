@@ -5,8 +5,9 @@ import 'dart:io';
 import 'package:crypto_app/core/constants/api_routes.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
+import 'package:crypto_app/core/network/error_handling.dart';
 
-abstract class DioFactory {
+abstract class DioFactory with ErrorHandling {
   abstract Dio _dio;
 
   Dio getDio({
@@ -55,7 +56,7 @@ class DioFactoryImpl extends DioFactory {
 
       return result.data;
     } catch (e) {
-      throw Exception(e);
+      throw handleException(e);
     }
   }
 
@@ -74,7 +75,7 @@ class DioFactoryImpl extends DioFactory {
 
       return result.data;
     } catch (e) {
-      throw Exception(e);
+      throw handleException(e);
     }
   }
 }

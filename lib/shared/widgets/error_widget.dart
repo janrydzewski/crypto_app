@@ -4,9 +4,9 @@ import 'package:crypto_app/core/network/error/failures.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
-class ErrorWidget extends StatelessWidget {
+class CustomErrorWidget extends StatelessWidget {
   final Failure failure;
-  const ErrorWidget({super.key, required this.failure});
+  const CustomErrorWidget({super.key, required this.failure});
 
   @override
   Widget build(BuildContext context) {
@@ -14,6 +14,7 @@ class ErrorWidget extends StatelessWidget {
       height: MediaQuery.of(context).size.height - 350,
       alignment: Alignment.center,
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           LottieBuilder.asset(
             AnimationsK.lottieError,

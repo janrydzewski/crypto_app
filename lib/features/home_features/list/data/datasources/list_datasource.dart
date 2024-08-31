@@ -21,8 +21,8 @@ class ListDatasourceImpl implements ListDatasource {
         'vs_currency': 'usd',
       });
       return (response).map((e) => CryptoEntity.fromJson(e)).toList();
-    } catch (e) {
-      throw Exception(e);
+    } catch (e, st) {
+      throw dioFactory.defaultException(e, st);
     }
   }
 }

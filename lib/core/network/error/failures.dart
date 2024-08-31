@@ -1,49 +1,53 @@
+// ignore_for_file: constant_identifier_names
 
+import 'dart:io';
+
+import 'package:crypto_app/core/network/error/exceptions.dart';
 import 'package:equatable/equatable.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'failures.freezed.dart';
-
-abstract class Failure extends Equatable {
-  const Failure();
-
-  String? get message;
+enum ErrorCode {
+  UNPROCESSABLE,
+  CONFLICT,
+  NOT_FOUND,
+  FORBIDDEN,
+  SERVER,
+  AUTH,
+  NO_INTERNET_CONNECTION,
+  TOO_MANY_REQUESTS,
+  UNKNOWN
 }
 
+class Failure extends Equatable {
+  final ErrorCode code;
+  final String message;
 
-@freezed
-class ApiFailure extends Failure with _$ApiFailure {
-  const factory ApiFailure({required String message}) = _ApiFailure;
+  const Failure({required this.code, required this.message});
 
-  const ApiFailure._();
+  factory Failure.fromException(dynamic exception) {
+    final exceptionMap = {
+      UnprocessableException: ErrorCode.UNPROCESSABLE,
+      ConflictException: ErrorCode.CONFLICT,
+      NotFoundException: ErrorCode.NOT_FOUND,
+      ForbiddenException: ErrorCode.FORBIDDEN,
+      ServerException: ErrorCode.SERVER,
+      AuthException: ErrorCode.AUTH,
+      NoInternetConnectionException: ErrorCode.NO_INTERNET_CONNECTION,
+      SocketException: ErrorCode.NO_INTERNET_CONNECTION,
+      TooManyRequestsException: ErrorCode.TOO_MANY_REQUESTS,
+    };
+
+    var errorCode = exceptionMap[exception.runtimeType] ?? ErrorCode.UNKNOWN;
+    var errorMessage = (exception is CustomException) ? exception.message : "Unexpected error";
+
+    return Failure(code: errorCode, message: errorMessage);
+  }
 
   @override
   List<Object?> get props => [message];
 }
 
-@freezed
-class ParseFailure extends Failure with _$ParseFailure {
-  const factory ParseFailure.typeFailure({StackTrace? stackTrace}) =
-      TypeFailure;
+class CustomException {
+  final String message;
 
-  const ParseFailure._();
-
-  @override
-  String? get message => null;
-
-  @override
-  List<Object?> get props => [message];
-}
-
-@freezed
-class UnknownFailure extends Failure with _$UnknownFailure {
-  const factory UnknownFailure.undefined({String? message}) = _UnknownFailure;
-
-  const UnknownFailure._();
-
-  @override
-  String? get message => null;
-
-  @override
-  List<Object?> get props => [message];
+  CustomException(this.message);
 }

@@ -3,6 +3,7 @@ import 'package:crypto_app/features/home_features/list/presentation/bloc/list_bl
 import 'package:crypto_app/features/home_features/list/presentation/widgets/crypto_listview_widget.dart';
 import 'package:crypto_app/features/home_features/list/presentation/widgets/list_appbar_widget.dart';
 import 'package:crypto_app/shared/widgets/crypto_scaffold_widget.dart';
+import 'package:crypto_app/shared/widgets/error_widget.dart';
 import 'package:crypto_app/shared/widgets/loading_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -40,7 +41,7 @@ class _ListView extends StatelessWidget {
           data: (data) => CryptoListViewWidget(
             cryptoList: data,
           ),
-          failure: (failure) => ErrorWidget(failure),
+          failure: (failure) => CustomErrorWidget(failure: failure),
         );
       },
     );
