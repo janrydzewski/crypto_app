@@ -17,19 +17,20 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$ChartEvent {
   String get cryptoId => throw _privateConstructorUsedError;
+  int get days => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String cryptoId) getChartData,
+    required TResult Function(String cryptoId, int days) getChartData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String cryptoId)? getChartData,
+    TResult? Function(String cryptoId, int days)? getChartData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String cryptoId)? getChartData,
+    TResult Function(String cryptoId, int days)? getChartData,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -61,7 +62,7 @@ abstract class $ChartEventCopyWith<$Res> {
           ChartEvent value, $Res Function(ChartEvent) then) =
       _$ChartEventCopyWithImpl<$Res, ChartEvent>;
   @useResult
-  $Res call({String cryptoId});
+  $Res call({String cryptoId, int days});
 }
 
 /// @nodoc
@@ -78,12 +79,17 @@ class _$ChartEventCopyWithImpl<$Res, $Val extends ChartEvent>
   @override
   $Res call({
     Object? cryptoId = null,
+    Object? days = null,
   }) {
     return _then(_value.copyWith(
       cryptoId: null == cryptoId
           ? _value.cryptoId
           : cryptoId // ignore: cast_nullable_to_non_nullable
               as String,
+      days: null == days
+          ? _value.days
+          : days // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -96,7 +102,7 @@ abstract class _$$GetChartDataImplCopyWith<$Res>
       __$$GetChartDataImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String cryptoId});
+  $Res call({String cryptoId, int days});
 }
 
 /// @nodoc
@@ -111,12 +117,17 @@ class __$$GetChartDataImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? cryptoId = null,
+    Object? days = null,
   }) {
     return _then(_$GetChartDataImpl(
       cryptoId: null == cryptoId
           ? _value.cryptoId
           : cryptoId // ignore: cast_nullable_to_non_nullable
               as String,
+      days: null == days
+          ? _value.days
+          : days // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -124,14 +135,16 @@ class __$$GetChartDataImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$GetChartDataImpl implements _GetChartData {
-  const _$GetChartDataImpl({required this.cryptoId});
+  const _$GetChartDataImpl({required this.cryptoId, required this.days});
 
   @override
   final String cryptoId;
+  @override
+  final int days;
 
   @override
   String toString() {
-    return 'ChartEvent.getChartData(cryptoId: $cryptoId)';
+    return 'ChartEvent.getChartData(cryptoId: $cryptoId, days: $days)';
   }
 
   @override
@@ -140,11 +153,12 @@ class _$GetChartDataImpl implements _GetChartData {
         (other.runtimeType == runtimeType &&
             other is _$GetChartDataImpl &&
             (identical(other.cryptoId, cryptoId) ||
-                other.cryptoId == cryptoId));
+                other.cryptoId == cryptoId) &&
+            (identical(other.days, days) || other.days == days));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, cryptoId);
+  int get hashCode => Object.hash(runtimeType, cryptoId, days);
 
   @JsonKey(ignore: true)
   @override
@@ -155,27 +169,27 @@ class _$GetChartDataImpl implements _GetChartData {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String cryptoId) getChartData,
+    required TResult Function(String cryptoId, int days) getChartData,
   }) {
-    return getChartData(cryptoId);
+    return getChartData(cryptoId, days);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String cryptoId)? getChartData,
+    TResult? Function(String cryptoId, int days)? getChartData,
   }) {
-    return getChartData?.call(cryptoId);
+    return getChartData?.call(cryptoId, days);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String cryptoId)? getChartData,
+    TResult Function(String cryptoId, int days)? getChartData,
     required TResult orElse(),
   }) {
     if (getChartData != null) {
-      return getChartData(cryptoId);
+      return getChartData(cryptoId, days);
     }
     return orElse();
   }
@@ -210,11 +224,14 @@ class _$GetChartDataImpl implements _GetChartData {
 }
 
 abstract class _GetChartData implements ChartEvent {
-  const factory _GetChartData({required final String cryptoId}) =
-      _$GetChartDataImpl;
+  const factory _GetChartData(
+      {required final String cryptoId,
+      required final int days}) = _$GetChartDataImpl;
 
   @override
   String get cryptoId;
+  @override
+  int get days;
   @override
   @JsonKey(ignore: true)
   _$$GetChartDataImplCopyWith<_$GetChartDataImpl> get copyWith =>

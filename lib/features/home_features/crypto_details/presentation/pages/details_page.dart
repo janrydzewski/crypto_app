@@ -25,8 +25,9 @@ class DetailsPage extends StatelessWidget {
           create: (context) => IntervalBloc(),
         ),
         BlocProvider(
-          create: (context) => ChartBloc(locator())
-            ..add(ChartEvent.getChartData(cryptoId: cryptoId)),
+          create: (context) =>
+              ChartBloc(cryptoId, locator(), context.read<IntervalBloc>())
+                ..add(ChartEvent.getChartData(cryptoId: cryptoId, days: 1)),
         ),
         BlocProvider(
           create: (context) => CryptoDetailsBloc(locator())
