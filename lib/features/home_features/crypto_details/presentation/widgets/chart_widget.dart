@@ -22,6 +22,7 @@ class ChartWidget extends StatelessWidget {
         child: LineChart(
           mainData(prices.prices, context, isLoaded),
           duration: const Duration(seconds: 2),
+          curve: Curves.easeInOut,
         ),
       ),
     );
