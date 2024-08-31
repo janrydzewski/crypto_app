@@ -9,14 +9,16 @@ class CryptoListViewWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-        padding: EdgeInsets.zero,
-        shrinkWrap: true,
-        physics: const NeverScrollableScrollPhysics(),
-        itemBuilder: (context, index) {
-          return _ListViewElementWidget(crypto: cryptoList[index]);
-        },
-        itemCount: cryptoList.length);
+    return SingleChildScrollView(
+      child: ListView.builder(
+          padding: EdgeInsets.zero,
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          itemBuilder: (context, index) {
+            return _ListViewElementWidget(crypto: cryptoList[index]);
+          },
+          itemCount: cryptoList.length),
+    );
   }
 }
 
