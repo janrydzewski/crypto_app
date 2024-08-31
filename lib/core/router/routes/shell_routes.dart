@@ -1,6 +1,7 @@
 import 'package:crypto_app/core/addons/global.dart';
 import 'package:crypto_app/core/router/router.dart';
 import 'package:crypto_app/core/router/routes.dart';
+import 'package:crypto_app/features/home_features/crypto_details/presentation/pages/details_page.dart';
 import 'package:crypto_app/features/home_features/home/presentation/pages/home_page.dart';
 import 'package:crypto_app/features/home_features/list/presentation/pages/list_page.dart';
 import 'package:crypto_app/features/other_features/root/presentation/pages/root_page.dart';
@@ -35,7 +36,14 @@ final StatefulShellBranch homeBranches =
 final StatefulShellBranch listBranches =
     StatefulShellBranch(navigatorKey: listNavigatorKey, routes: [
   GoRoute(
-    path: RoutesK.list,
-    builder: (context, state) => const ListPage(),
-  ),
+      path: RoutesK.list,
+      builder: (context, state) => const ListPage(),
+      routes: [
+        GoRoute(
+          path: "details/:id",
+          builder: (context, state) => DetailsPage(
+            cryptoId: state.pathParameters['id'] as String,
+          ),
+        ),
+      ]),
 ]);

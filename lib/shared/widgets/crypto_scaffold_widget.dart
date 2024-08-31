@@ -1,5 +1,7 @@
 import 'package:crypto_app/core/addons/global.dart';
+import 'package:crypto_app/core/extenstions/go_router_extenstion.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class CryptoScaffold extends StatelessWidget {
   final Widget body;
@@ -59,7 +61,9 @@ class CryptoScaffold extends StatelessWidget {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: CustomScrollView(
-        controller: Global.scrollController,
+        controller: GoRouter.of(context).addScrollController
+            ? Global.scrollController
+            : null,
         physics: const ClampingScrollPhysics(),
         slivers: [
           buildAppbar(context),
