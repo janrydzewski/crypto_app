@@ -228,9 +228,7 @@ mixin _$CryptoDetailsState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(
-            CryptoDetailsEntity cryptoDetails, PricesEntity pricesEntity)
-        data,
+    required TResult Function(CryptoDetailsEntity cryptoDetails) data,
     required TResult Function(Failure failure) failure,
   }) =>
       throw _privateConstructorUsedError;
@@ -238,9 +236,7 @@ mixin _$CryptoDetailsState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(
-            CryptoDetailsEntity cryptoDetails, PricesEntity pricesEntity)?
-        data,
+    TResult? Function(CryptoDetailsEntity cryptoDetails)? data,
     TResult? Function(Failure failure)? failure,
   }) =>
       throw _privateConstructorUsedError;
@@ -248,9 +244,7 @@ mixin _$CryptoDetailsState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(
-            CryptoDetailsEntity cryptoDetails, PricesEntity pricesEntity)?
-        data,
+    TResult Function(CryptoDetailsEntity cryptoDetails)? data,
     TResult Function(Failure failure)? failure,
     required TResult orElse(),
   }) =>
@@ -340,9 +334,7 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(
-            CryptoDetailsEntity cryptoDetails, PricesEntity pricesEntity)
-        data,
+    required TResult Function(CryptoDetailsEntity cryptoDetails) data,
     required TResult Function(Failure failure) failure,
   }) {
     return initial();
@@ -353,9 +345,7 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(
-            CryptoDetailsEntity cryptoDetails, PricesEntity pricesEntity)?
-        data,
+    TResult? Function(CryptoDetailsEntity cryptoDetails)? data,
     TResult? Function(Failure failure)? failure,
   }) {
     return initial?.call();
@@ -366,9 +356,7 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(
-            CryptoDetailsEntity cryptoDetails, PricesEntity pricesEntity)?
-        data,
+    TResult Function(CryptoDetailsEntity cryptoDetails)? data,
     TResult Function(Failure failure)? failure,
     required TResult orElse(),
   }) {
@@ -460,9 +448,7 @@ class _$LoadingImpl implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(
-            CryptoDetailsEntity cryptoDetails, PricesEntity pricesEntity)
-        data,
+    required TResult Function(CryptoDetailsEntity cryptoDetails) data,
     required TResult Function(Failure failure) failure,
   }) {
     return loading();
@@ -473,9 +459,7 @@ class _$LoadingImpl implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(
-            CryptoDetailsEntity cryptoDetails, PricesEntity pricesEntity)?
-        data,
+    TResult? Function(CryptoDetailsEntity cryptoDetails)? data,
     TResult? Function(Failure failure)? failure,
   }) {
     return loading?.call();
@@ -486,9 +470,7 @@ class _$LoadingImpl implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(
-            CryptoDetailsEntity cryptoDetails, PricesEntity pricesEntity)?
-        data,
+    TResult Function(CryptoDetailsEntity cryptoDetails)? data,
     TResult Function(Failure failure)? failure,
     required TResult orElse(),
   }) {
@@ -546,10 +528,9 @@ abstract class _$$DataImplCopyWith<$Res> {
           _$DataImpl value, $Res Function(_$DataImpl) then) =
       __$$DataImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({CryptoDetailsEntity cryptoDetails, PricesEntity pricesEntity});
+  $Res call({CryptoDetailsEntity cryptoDetails});
 
   $CryptoDetailsEntityCopyWith<$Res> get cryptoDetails;
-  $PricesEntityCopyWith<$Res> get pricesEntity;
 }
 
 /// @nodoc
@@ -563,17 +544,12 @@ class __$$DataImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? cryptoDetails = null,
-    Object? pricesEntity = null,
   }) {
     return _then(_$DataImpl(
       null == cryptoDetails
           ? _value.cryptoDetails
           : cryptoDetails // ignore: cast_nullable_to_non_nullable
               as CryptoDetailsEntity,
-      null == pricesEntity
-          ? _value.pricesEntity
-          : pricesEntity // ignore: cast_nullable_to_non_nullable
-              as PricesEntity,
     ));
   }
 
@@ -584,29 +560,19 @@ class __$$DataImplCopyWithImpl<$Res>
       return _then(_value.copyWith(cryptoDetails: value));
     });
   }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $PricesEntityCopyWith<$Res> get pricesEntity {
-    return $PricesEntityCopyWith<$Res>(_value.pricesEntity, (value) {
-      return _then(_value.copyWith(pricesEntity: value));
-    });
-  }
 }
 
 /// @nodoc
 
 class _$DataImpl implements _Data {
-  const _$DataImpl(this.cryptoDetails, this.pricesEntity);
+  const _$DataImpl(this.cryptoDetails);
 
   @override
   final CryptoDetailsEntity cryptoDetails;
-  @override
-  final PricesEntity pricesEntity;
 
   @override
   String toString() {
-    return 'CryptoDetailsState.data(cryptoDetails: $cryptoDetails, pricesEntity: $pricesEntity)';
+    return 'CryptoDetailsState.data(cryptoDetails: $cryptoDetails)';
   }
 
   @override
@@ -615,13 +581,11 @@ class _$DataImpl implements _Data {
         (other.runtimeType == runtimeType &&
             other is _$DataImpl &&
             (identical(other.cryptoDetails, cryptoDetails) ||
-                other.cryptoDetails == cryptoDetails) &&
-            (identical(other.pricesEntity, pricesEntity) ||
-                other.pricesEntity == pricesEntity));
+                other.cryptoDetails == cryptoDetails));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, cryptoDetails, pricesEntity);
+  int get hashCode => Object.hash(runtimeType, cryptoDetails);
 
   @JsonKey(ignore: true)
   @override
@@ -634,12 +598,10 @@ class _$DataImpl implements _Data {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(
-            CryptoDetailsEntity cryptoDetails, PricesEntity pricesEntity)
-        data,
+    required TResult Function(CryptoDetailsEntity cryptoDetails) data,
     required TResult Function(Failure failure) failure,
   }) {
-    return data(cryptoDetails, pricesEntity);
+    return data(cryptoDetails);
   }
 
   @override
@@ -647,12 +609,10 @@ class _$DataImpl implements _Data {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(
-            CryptoDetailsEntity cryptoDetails, PricesEntity pricesEntity)?
-        data,
+    TResult? Function(CryptoDetailsEntity cryptoDetails)? data,
     TResult? Function(Failure failure)? failure,
   }) {
-    return data?.call(cryptoDetails, pricesEntity);
+    return data?.call(cryptoDetails);
   }
 
   @override
@@ -660,14 +620,12 @@ class _$DataImpl implements _Data {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(
-            CryptoDetailsEntity cryptoDetails, PricesEntity pricesEntity)?
-        data,
+    TResult Function(CryptoDetailsEntity cryptoDetails)? data,
     TResult Function(Failure failure)? failure,
     required TResult orElse(),
   }) {
     if (data != null) {
-      return data(cryptoDetails, pricesEntity);
+      return data(cryptoDetails);
     }
     return orElse();
   }
@@ -711,11 +669,9 @@ class _$DataImpl implements _Data {
 }
 
 abstract class _Data implements CryptoDetailsState {
-  const factory _Data(final CryptoDetailsEntity cryptoDetails,
-      final PricesEntity pricesEntity) = _$DataImpl;
+  const factory _Data(final CryptoDetailsEntity cryptoDetails) = _$DataImpl;
 
   CryptoDetailsEntity get cryptoDetails;
-  PricesEntity get pricesEntity;
   @JsonKey(ignore: true)
   _$$DataImplCopyWith<_$DataImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -787,9 +743,7 @@ class _$FailureImpl implements _Failure {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(
-            CryptoDetailsEntity cryptoDetails, PricesEntity pricesEntity)
-        data,
+    required TResult Function(CryptoDetailsEntity cryptoDetails) data,
     required TResult Function(Failure failure) failure,
   }) {
     return failure(this.failure);
@@ -800,9 +754,7 @@ class _$FailureImpl implements _Failure {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(
-            CryptoDetailsEntity cryptoDetails, PricesEntity pricesEntity)?
-        data,
+    TResult? Function(CryptoDetailsEntity cryptoDetails)? data,
     TResult? Function(Failure failure)? failure,
   }) {
     return failure?.call(this.failure);
@@ -813,9 +765,7 @@ class _$FailureImpl implements _Failure {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(
-            CryptoDetailsEntity cryptoDetails, PricesEntity pricesEntity)?
-        data,
+    TResult Function(CryptoDetailsEntity cryptoDetails)? data,
     TResult Function(Failure failure)? failure,
     required TResult orElse(),
   }) {

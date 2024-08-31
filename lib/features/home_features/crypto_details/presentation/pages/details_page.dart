@@ -1,11 +1,16 @@
 import 'package:crypto_app/core/di/injectable_config.dart';
-import 'package:crypto_app/features/home_features/crypto_details/presentation/bloc/crypto_details_bloc.dart';
+import 'package:crypto_app/features/home_features/crypto_details/domain/entities/crypto_details_entity.dart';
+import 'package:crypto_app/features/home_features/crypto_details/presentation/bloc/chart/chart_bloc.dart';
+import 'package:crypto_app/features/home_features/crypto_details/presentation/bloc/crypto_details/crypto_details_bloc.dart';
+import 'package:crypto_app/features/home_features/crypto_details/presentation/bloc/interval/interval_bloc.dart';
 import 'package:crypto_app/features/home_features/crypto_details/presentation/widgets/details_widget.dart';
+import 'package:crypto_app/features/home_features/crypto_details/presentation/widgets/info_widget.dart';
 import 'package:crypto_app/shared/widgets/crypto_scaffold_widget.dart';
 import 'package:crypto_app/shared/widgets/error_widget.dart';
 import 'package:crypto_app/shared/widgets/loading_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 class DetailsPage extends StatelessWidget {
   final String cryptoId;
@@ -13,9 +18,20 @@ class DetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => CryptoDetailsBloc(locator(), locator())
-        ..add(CryptoDetailsEvent.getCryptoDetails(cryptoId: cryptoId)),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => IntervalBloc(),
+        ),
+        BlocProvider(
+          create: (context) => ChartBloc(locator())
+            ..add(ChartEvent.getChartData(cryptoId: cryptoId)),
+        ),
+        BlocProvider(
+          create: (context) => CryptoDetailsBloc(locator())
+            ..add(CryptoDetailsEvent.getCryptoDetails(cryptoId: cryptoId)),
+        ),
+      ],
       child: _DetailsView(cryptoId),
     );
   }
@@ -29,7 +45,12 @@ class _DetailsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return CryptoScaffold.title(
       title: cryptoId.toUpperCase(),
-      body: _buildView(),
+      body: Column(
+        children: [
+          _buildView(),
+          _buildChart(),
+        ],
+      ),
     );
   }
 
@@ -38,9 +59,28 @@ class _DetailsView extends StatelessWidget {
       builder: (context, state) {
         return state.when(
           initial: () => const LoadingWidget(),
-          loading: () => const LoadingWidget(),
-          data: (details, prices) => DetailsWidget(
+          loading: () => Skeletonizer(
+            child: DetailsWidget(
+              cryptoDetails: CryptoDetailsEntity.example(),
+            ),
+          ),
+          data: (details) => DetailsWidget(
             cryptoDetails: details,
+          ),
+          failure: (failure) => CustomErrorWidget(failure: failure),
+        );
+      },
+    );
+  }
+
+  _buildChart() {
+    return BlocBuilder<ChartBloc, ChartState>(
+      builder: (context, state) {
+        return state.when(
+          initial: () => const LoadingWidget(),
+          loading: () => const LoadingWidget(),
+          data: (prices) => InfoWidget(
+            prices: prices,
           ),
           failure: (failure) => CustomErrorWidget(failure: failure),
         );

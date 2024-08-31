@@ -36,6 +36,8 @@ mixin _$MarketDataEntity {
   double get priceChangePercentage200d => throw _privateConstructorUsedError;
   @JsonKey(name: 'price_change_percentage_1y')
   double get priceChangePercentage1y => throw _privateConstructorUsedError;
+  @JsonKey(name: 'current_price')
+  Map<String, dynamic> get currentPrice => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -64,7 +66,8 @@ abstract class $MarketDataEntityCopyWith<$Res> {
       @JsonKey(name: 'price_change_percentage_200d')
       double priceChangePercentage200d,
       @JsonKey(name: 'price_change_percentage_1y')
-      double priceChangePercentage1y});
+      double priceChangePercentage1y,
+      @JsonKey(name: 'current_price') Map<String, dynamic> currentPrice});
 }
 
 /// @nodoc
@@ -88,6 +91,7 @@ class _$MarketDataEntityCopyWithImpl<$Res, $Val extends MarketDataEntity>
     Object? priceChangePercentage60d = null,
     Object? priceChangePercentage200d = null,
     Object? priceChangePercentage1y = null,
+    Object? currentPrice = null,
   }) {
     return _then(_value.copyWith(
       priceChange24h: null == priceChange24h
@@ -122,6 +126,10 @@ class _$MarketDataEntityCopyWithImpl<$Res, $Val extends MarketDataEntity>
           ? _value.priceChangePercentage1y
           : priceChangePercentage1y // ignore: cast_nullable_to_non_nullable
               as double,
+      currentPrice: null == currentPrice
+          ? _value.currentPrice
+          : currentPrice // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>,
     ) as $Val);
   }
 }
@@ -149,7 +157,8 @@ abstract class _$$MarketDataEntityImplCopyWith<$Res>
       @JsonKey(name: 'price_change_percentage_200d')
       double priceChangePercentage200d,
       @JsonKey(name: 'price_change_percentage_1y')
-      double priceChangePercentage1y});
+      double priceChangePercentage1y,
+      @JsonKey(name: 'current_price') Map<String, dynamic> currentPrice});
 }
 
 /// @nodoc
@@ -171,6 +180,7 @@ class __$$MarketDataEntityImplCopyWithImpl<$Res>
     Object? priceChangePercentage60d = null,
     Object? priceChangePercentage200d = null,
     Object? priceChangePercentage1y = null,
+    Object? currentPrice = null,
   }) {
     return _then(_$MarketDataEntityImpl(
       priceChange24h: null == priceChange24h
@@ -205,6 +215,10 @@ class __$$MarketDataEntityImplCopyWithImpl<$Res>
           ? _value.priceChangePercentage1y
           : priceChangePercentage1y // ignore: cast_nullable_to_non_nullable
               as double,
+      currentPrice: null == currentPrice
+          ? _value._currentPrice
+          : currentPrice // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>,
     ));
   }
 }
@@ -227,7 +241,10 @@ class _$MarketDataEntityImpl implements _MarketDataEntity {
       @JsonKey(name: 'price_change_percentage_200d')
       required this.priceChangePercentage200d,
       @JsonKey(name: 'price_change_percentage_1y')
-      required this.priceChangePercentage1y});
+      required this.priceChangePercentage1y,
+      @JsonKey(name: 'current_price')
+      required final Map<String, dynamic> currentPrice})
+      : _currentPrice = currentPrice;
 
   factory _$MarketDataEntityImpl.fromJson(Map<String, dynamic> json) =>
       _$$MarketDataEntityImplFromJson(json);
@@ -256,10 +273,18 @@ class _$MarketDataEntityImpl implements _MarketDataEntity {
   @override
   @JsonKey(name: 'price_change_percentage_1y')
   final double priceChangePercentage1y;
+  final Map<String, dynamic> _currentPrice;
+  @override
+  @JsonKey(name: 'current_price')
+  Map<String, dynamic> get currentPrice {
+    if (_currentPrice is EqualUnmodifiableMapView) return _currentPrice;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_currentPrice);
+  }
 
   @override
   String toString() {
-    return 'MarketDataEntity(priceChange24h: $priceChange24h, priceChangePercentage24h: $priceChangePercentage24h, priceChangePercentage7d: $priceChangePercentage7d, priceChangePercentage14d: $priceChangePercentage14d, priceChangePercentage30d: $priceChangePercentage30d, priceChangePercentage60d: $priceChangePercentage60d, priceChangePercentage200d: $priceChangePercentage200d, priceChangePercentage1y: $priceChangePercentage1y)';
+    return 'MarketDataEntity(priceChange24h: $priceChange24h, priceChangePercentage24h: $priceChangePercentage24h, priceChangePercentage7d: $priceChangePercentage7d, priceChangePercentage14d: $priceChangePercentage14d, priceChangePercentage30d: $priceChangePercentage30d, priceChangePercentage60d: $priceChangePercentage60d, priceChangePercentage200d: $priceChangePercentage200d, priceChangePercentage1y: $priceChangePercentage1y, currentPrice: $currentPrice)';
   }
 
   @override
@@ -289,7 +314,9 @@ class _$MarketDataEntityImpl implements _MarketDataEntity {
                 other.priceChangePercentage200d == priceChangePercentage200d) &&
             (identical(
                     other.priceChangePercentage1y, priceChangePercentage1y) ||
-                other.priceChangePercentage1y == priceChangePercentage1y));
+                other.priceChangePercentage1y == priceChangePercentage1y) &&
+            const DeepCollectionEquality()
+                .equals(other._currentPrice, _currentPrice));
   }
 
   @JsonKey(ignore: true)
@@ -303,7 +330,8 @@ class _$MarketDataEntityImpl implements _MarketDataEntity {
       priceChangePercentage30d,
       priceChangePercentage60d,
       priceChangePercentage200d,
-      priceChangePercentage1y);
+      priceChangePercentage1y,
+      const DeepCollectionEquality().hash(_currentPrice));
 
   @JsonKey(ignore: true)
   @override
@@ -336,7 +364,10 @@ abstract class _MarketDataEntity implements MarketDataEntity {
       @JsonKey(name: 'price_change_percentage_200d')
       required final double priceChangePercentage200d,
       @JsonKey(name: 'price_change_percentage_1y')
-      required final double priceChangePercentage1y}) = _$MarketDataEntityImpl;
+      required final double priceChangePercentage1y,
+      @JsonKey(name: 'current_price')
+      required final Map<String, dynamic>
+          currentPrice}) = _$MarketDataEntityImpl;
 
   factory _MarketDataEntity.fromJson(Map<String, dynamic> json) =
       _$MarketDataEntityImpl.fromJson;
@@ -365,6 +396,9 @@ abstract class _MarketDataEntity implements MarketDataEntity {
   @override
   @JsonKey(name: 'price_change_percentage_1y')
   double get priceChangePercentage1y;
+  @override
+  @JsonKey(name: 'current_price')
+  Map<String, dynamic> get currentPrice;
   @override
   @JsonKey(ignore: true)
   _$$MarketDataEntityImplCopyWith<_$MarketDataEntityImpl> get copyWith =>

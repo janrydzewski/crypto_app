@@ -24,6 +24,7 @@ _$MarketDataEntityImpl _$$MarketDataEntityImplFromJson(
           (json['price_change_percentage_200d'] as num).toDouble(),
       priceChangePercentage1y:
           (json['price_change_percentage_1y'] as num).toDouble(),
+      currentPrice: json['current_price'] as Map<String, dynamic>,
     );
 
 Map<String, dynamic> _$$MarketDataEntityImplToJson(
@@ -37,4 +38,5 @@ Map<String, dynamic> _$$MarketDataEntityImplToJson(
       'price_change_percentage_60d': instance.priceChangePercentage60d,
       'price_change_percentage_200d': instance.priceChangePercentage200d,
       'price_change_percentage_1y': instance.priceChangePercentage1y,
+      'current_price': instance.currentPrice,
     };

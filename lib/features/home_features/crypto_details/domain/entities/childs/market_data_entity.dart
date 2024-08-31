@@ -16,6 +16,7 @@ class MarketDataEntity with _$MarketDataEntity {
     @JsonKey(name: 'price_change_percentage_60d') required double priceChangePercentage60d,
     @JsonKey(name: 'price_change_percentage_200d') required double priceChangePercentage200d,
     @JsonKey(name: 'price_change_percentage_1y') required double priceChangePercentage1y,
+    @JsonKey(name: 'current_price') required Map<String, dynamic> currentPrice,
   }) = _MarketDataEntity;
 
   factory MarketDataEntity.fromJson(Map<String, dynamic> json) =>

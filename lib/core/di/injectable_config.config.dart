@@ -46,11 +46,11 @@ extension GetItInjectableX on _i174.GetIt {
         _i540.ListRepositoryImpl(listDatasource: gh<_i332.ListDatasource>()));
     gh.lazySingleton<_i641.DetailsRepository>(() => _i641.DetailsRepositoryImpl(
         detailsDatasource: gh<_i718.DetailsDatasource>()));
-    gh.lazySingleton<_i454.GetCryptoDetailsUsecase>(() =>
-        _i454.GetCryptoDetailsUsecase(
-            detailsRepository: gh<_i641.DetailsRepository>()));
     gh.lazySingleton<_i410.GetCryptoPricesUsecase>(() =>
         _i410.GetCryptoPricesUsecase(
+            detailsRepository: gh<_i641.DetailsRepository>()));
+    gh.lazySingleton<_i454.GetCryptoDetailsUsecase>(() =>
+        _i454.GetCryptoDetailsUsecase(
             detailsRepository: gh<_i641.DetailsRepository>()));
     gh.lazySingleton<_i1025.GetCryptoListUsecase>(() =>
         _i1025.GetCryptoListUsecase(
