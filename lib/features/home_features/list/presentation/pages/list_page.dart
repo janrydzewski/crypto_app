@@ -1,7 +1,6 @@
 import 'package:crypto_app/core/di/injectable_config.dart';
 import 'package:crypto_app/features/home_features/list/presentation/bloc/list_bloc.dart';
 import 'package:crypto_app/features/home_features/list/presentation/widgets/crypto_listview_widget.dart';
-import 'package:crypto_app/features/home_features/list/presentation/widgets/list_appbar_widget.dart';
 import 'package:crypto_app/shared/widgets/crypto_scaffold_widget.dart';
 import 'package:crypto_app/shared/widgets/error_widget.dart';
 import 'package:crypto_app/shared/widgets/loading_widget.dart';
@@ -15,7 +14,7 @@ class ListPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) =>
-          ListBloc(locator())..add(ListEvent.getCryptoList(pageKey: 1)),
+          ListBloc(locator())..add(const ListEvent.getCryptoList(pageKey: 1)),
       child: const _ListView(),
     );
   }
@@ -26,8 +25,8 @@ class _ListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CryptoScaffold.appbar(
-      appBar: listAppBar(context),
+    return CryptoScaffold.title(
+      title: "Cryptocurrency List",
       body: _buildListView(),
     );
   }

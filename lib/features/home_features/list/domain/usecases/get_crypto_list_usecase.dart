@@ -11,7 +11,7 @@ class GetCryptoListUsecase {
   const GetCryptoListUsecase({required this.listRepository});
 
   Future<Either<Failure, List<CryptoEntity>>> call(
-      {int pageKey = 0, int pageSize = 10}) async {
+      {int pageKey = 0, int pageSize = 25}) async {
     return await listRepository.getCryptoList(pageKey, pageSize);
   }
 }
