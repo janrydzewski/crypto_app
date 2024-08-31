@@ -7,29 +7,17 @@ class CryptoScaffold extends StatelessWidget {
   final Widget body;
   final String? _title;
   final SliverAppBar? _appBar;
-  final List<Widget>? actions;
-  final Widget? floatingActionButton;
-  final FloatingActionButtonLocation? floatingActionButtonLocation;
-  final Widget? bottomWidget;
 
   const CryptoScaffold.title({
     super.key,
     required String title,
     required this.body,
-    this.actions,
-    this.floatingActionButton,
-    this.floatingActionButtonLocation,
-    this.bottomWidget,
   })  : _appBar = null,
         _title = title;
   const CryptoScaffold.appbar({
     super.key,
     required appBar,
     required this.body,
-    this.actions,
-    this.floatingActionButton,
-    this.floatingActionButtonLocation,
-    this.bottomWidget,
   })  : _appBar = appBar,
         _title = null;
 
@@ -45,15 +33,12 @@ class CryptoScaffold extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-        actions: actions,
       );
     }
     if (appBar != null) {
       return appBar!;
     }
-    return SliverAppBar.medium(
-      actions: actions,
-    );
+    return const SliverAppBar.medium();
   }
 
   @override
@@ -75,9 +60,6 @@ class CryptoScaffold extends StatelessWidget {
           ),
         ],
       ),
-      floatingActionButton: floatingActionButton,
-      floatingActionButtonLocation: floatingActionButtonLocation,
-      bottomNavigationBar: bottomWidget,
     );
   }
 }

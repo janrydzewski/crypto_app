@@ -17,7 +17,6 @@ class ListBloc extends Bloc<ListEvent, ListState> {
   _onGetCryptoList(_GetCryptoList event, Emitter<ListState> emit) async {
     // emit(const _Loading());
     final result = await _getCryptoListUsecase.call(pageKey: event.pageKey);
-    await Future.delayed(const Duration(seconds: 2));
     result.fold((l) => emit(_Failure(l)), (r) {
       final currentList =
           state.maybeWhen(orElse: () => <CryptoEntity>[], data: (list) => list);

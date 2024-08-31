@@ -1,5 +1,6 @@
 import 'package:crypto_app/core/di/injectable_config.dart';
 import 'package:crypto_app/features/home_features/crypto_details/presentation/bloc/crypto_details_bloc.dart';
+import 'package:crypto_app/features/home_features/crypto_details/presentation/widgets/details_widget.dart';
 import 'package:crypto_app/shared/widgets/crypto_scaffold_widget.dart';
 import 'package:crypto_app/shared/widgets/error_widget.dart';
 import 'package:crypto_app/shared/widgets/loading_widget.dart';
@@ -13,20 +14,21 @@ class DetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => CryptoDetailsBloc(locator())
+      create: (context) => CryptoDetailsBloc(locator(), locator())
         ..add(CryptoDetailsEvent.getCryptoDetails(cryptoId: cryptoId)),
-      child: const _DetailsView(),
+      child: _DetailsView(cryptoId),
     );
   }
 }
 
 class _DetailsView extends StatelessWidget {
-  const _DetailsView();
+  final String cryptoId;
+  const _DetailsView(this.cryptoId);
 
   @override
   Widget build(BuildContext context) {
     return CryptoScaffold.title(
-      title: "Cryptocurrency Details",
+      title: cryptoId.toUpperCase(),
       body: _buildView(),
     );
   }
@@ -37,7 +39,9 @@ class _DetailsView extends StatelessWidget {
         return state.when(
           initial: () => const LoadingWidget(),
           loading: () => const LoadingWidget(),
-          data: (data) => Text(data.toString()),
+          data: (details, prices) => DetailsWidget(
+            cryptoDetails: details,
+          ),
           failure: (failure) => CustomErrorWidget(failure: failure),
         );
       },

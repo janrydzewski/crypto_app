@@ -15,6 +15,8 @@ import 'package:crypto_app/features/home_features/crypto_details/domain/reposito
     as _i641;
 import 'package:crypto_app/features/home_features/crypto_details/domain/usecases/get_crypto_details_usecase.dart'
     as _i454;
+import 'package:crypto_app/features/home_features/crypto_details/domain/usecases/get_crypto_prices_usecase.dart'
+    as _i410;
 import 'package:crypto_app/features/home_features/list/data/datasources/list_datasource.dart'
     as _i332;
 import 'package:crypto_app/features/home_features/list/domain/repositories/list_repository.dart'
@@ -46,6 +48,9 @@ extension GetItInjectableX on _i174.GetIt {
         detailsDatasource: gh<_i718.DetailsDatasource>()));
     gh.lazySingleton<_i454.GetCryptoDetailsUsecase>(() =>
         _i454.GetCryptoDetailsUsecase(
+            detailsRepository: gh<_i641.DetailsRepository>()));
+    gh.lazySingleton<_i410.GetCryptoPricesUsecase>(() =>
+        _i410.GetCryptoPricesUsecase(
             detailsRepository: gh<_i641.DetailsRepository>()));
     gh.lazySingleton<_i1025.GetCryptoListUsecase>(() =>
         _i1025.GetCryptoListUsecase(
