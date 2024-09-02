@@ -40,7 +40,7 @@ final StatefulShellBranch listBranches =
       builder: (context, state) => const ListPage(),
       routes: [
         GoRoute(
-          path: "details/:id",
+          path: RoutesK.details,
           builder: (context, state) => DetailsPage(
             cryptoId: state.pathParameters['id'] as String,
           ),

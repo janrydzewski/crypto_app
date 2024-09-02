@@ -26,18 +26,13 @@ class ChartWidget extends StatelessWidget {
   LineChartData mainData(
       final List<List<double>> prices, BuildContext context, bool isLoaded) {
     return LineChartData(
-      gridData: const FlGridData(
-        show: false,
-      ),
-      titlesData: const FlTitlesData(
-        show: false,
-      ),
-      borderData: FlBorderData(
-        show: false,
-      ),
+      gridData: const FlGridData(show: false),
+      titlesData: const FlTitlesData(show: false),
+      borderData: FlBorderData(show: false),
       lineTouchData: LineTouchData(
         touchTooltipData: LineTouchTooltipData(
-            getTooltipColor: (touchedSpot) => Colors.green.withOpacity(0.3),
+            getTooltipColor: (touchedSpot) =>
+                context.secondaryColor.withOpacity(0.3),
             getTooltipItems: (List<LineBarSpot> touchedSpots) {
               return touchedSpots.map((LineBarSpot touchedSpot) {
                 return LineTooltipItem(touchedSpot.y.toStringAsFixed(2),

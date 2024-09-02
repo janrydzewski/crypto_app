@@ -10,7 +10,7 @@ class LoadingPage extends StatelessWidget {
 }
 
 class _LoadingView extends StatelessWidget {
-  const _LoadingView({super.key});
+  const _LoadingView();
 
   @override
   Widget build(BuildContext context) {

@@ -5,7 +5,7 @@ import 'package:crypto_app/features/home_features/crypto_details/presentation/bl
 import 'package:crypto_app/features/home_features/crypto_details/presentation/bloc/crypto_details/crypto_details_bloc.dart';
 import 'package:crypto_app/features/home_features/crypto_details/presentation/bloc/interval/interval_bloc.dart';
 import 'package:crypto_app/features/home_features/crypto_details/presentation/widgets/details_widget.dart';
-import 'package:crypto_app/features/home_features/crypto_details/presentation/widgets/info_widget.dart';
+import 'package:crypto_app/features/home_features/crypto_details/presentation/widgets/timeline_chart_widget.dart';
 import 'package:crypto_app/shared/widgets/crypto_scaffold_widget.dart';
 import 'package:crypto_app/shared/widgets/error_widget.dart';
 import 'package:crypto_app/shared/widgets/loading_widget.dart';
@@ -84,11 +84,11 @@ class _DetailsView extends StatelessWidget {
       builder: (context, state) {
         return state.when(
           initial: () => const LoadingWidget(),
-          loading: () => InfoWidget(
+          loading: () => TimelineChartWidget(
             prices: PricesEntity.example(),
             isLoaded: false,
           ),
-          data: (prices) => InfoWidget(
+          data: (prices) => TimelineChartWidget(
             prices: prices,
             isLoaded: true,
           ),

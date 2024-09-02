@@ -17,10 +17,8 @@ class CryptoDetailsBloc extends Bloc<CryptoDetailsEvent, CryptoDetailsState> {
   _onGetCryptoDetails(
       _GetCryptoDetails event, Emitter<CryptoDetailsState> emit) async {
     emit(const _Loading());
-
     final result =
         await _getCryptoDetailsUsecase.call(cryptoId: event.cryptoId);
-    await Future.delayed(const Duration(seconds: 1));
     result.fold((l) => emit(_Failure(l)), (r) => emit(_Data(r)));
   }
 }

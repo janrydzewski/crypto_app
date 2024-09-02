@@ -1,6 +1,7 @@
 import 'package:crypto_app/core/addons/global.dart';
 import 'package:crypto_app/core/constants/margins.dart';
 import 'package:crypto_app/core/extenstions/style_extenstion.dart';
+import 'package:crypto_app/core/router/routes.dart';
 import 'package:crypto_app/core/theme/styles/box_styles.dart';
 import 'package:crypto_app/features/home_features/list/domain/entities/crypto_entity.dart';
 import 'package:crypto_app/features/home_features/list/presentation/bloc/list_bloc.dart';
@@ -24,7 +25,6 @@ class _CryptoListViewWidgetState extends State<CryptoListViewWidget> {
   @override
   void initState() {
     Global.scrollController!.addListener(listener);
-
     super.initState();
   }
 
@@ -66,16 +66,18 @@ class _CryptoListViewWidgetState extends State<CryptoListViewWidget> {
 
 class _ListViewElementWidget extends StatelessWidget {
   final CryptoEntity crypto;
-  const _ListViewElementWidget({super.key, required this.crypto});
+  const _ListViewElementWidget({required this.crypto});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => context.push('/list/details/${crypto.id}'),
+      onTap: () => context.push(
+          "${RoutesK.list}/${RoutesK.details}".replaceAll(':id', crypto.id)),
       child: Padding(
         padding: MarginsK.h10v4,
         child: Container(
-          decoration: dropShadowEffect(context),
+          decoration: dropShadowEffect(context)
+              .copyWith(color: Theme.of(context).scaffoldBackgroundColor),
           margin: MarginsK.h10v10,
           padding: MarginsK.h10v15,
           child: Row(
@@ -118,7 +120,7 @@ class _ListViewElementWidget extends StatelessWidget {
 }
 
 class _LoadingWidget extends StatelessWidget {
-  const _LoadingWidget({super.key});
+  const _LoadingWidget();
 
   @override
   Widget build(BuildContext context) {

@@ -27,13 +27,14 @@ class _RootView extends StatelessWidget {
     return BlocListener<NetworkConnectionCubit, NetworkConnectionState>(
       listener: (context, state) async {
         if (state.connectionStatus == ConnectionStatus.disconnected) {
-          await showDialog(
-              context: context,
-              builder: (context) => const ConnectionLostView());
+          // await showDialog(
+          //     context: context,
+          //     builder: (context) => const ConnectionLostView());
         }
       },
       child: Scaffold(
         resizeToAvoidBottomInset: true,
+        extendBody: true,
         body: Stack(
           children: [
             navigationShell,

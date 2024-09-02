@@ -17,10 +17,9 @@ class DetailsWidget extends StatelessWidget {
           width: 80,
           height: 80,
           child: ClipRRect(
-            borderRadius: MarginsK.circular40,
-            child:
-                CustomCachedNetworkImage(imageUrl: cryptoDetails.image.large),
-          ),
+              borderRadius: MarginsK.circular40,
+              child: CustomCachedNetworkImage(
+                  imageUrl: cryptoDetails.image.large)),
         ),
         const SizedBox(
           height: 20,
@@ -32,20 +31,20 @@ class DetailsWidget extends StatelessWidget {
         const SizedBox(
           height: 10,
         ),
-        _buildPercentage(),
+        _buildPercentage(context),
       ],
     );
   }
 
-  Widget _buildPercentage() => Container(
+  Widget _buildPercentage(BuildContext context) => Container(
         padding: MarginsK.h10v4,
         decoration: BoxDecoration(
             borderRadius: MarginsK.circular10,
             color: !isNeutral
                 ? isPositive
-                    ? Colors.green.withOpacity(0.2)
-                    : Colors.red.withOpacity(0.2)
-                : Colors.grey.withOpacity(0.2)),
+                    ? context.secondaryColor.withOpacity(0.2)
+                    : context.errorColor.withOpacity(0.2)
+                : context.outline.withOpacity(0.2)),
         child: Text(
             "${isPositive ? "+" : ""}${cryptoDetails.marketData.priceChangePercentage24h.toStringAsFixed(1)}%"),
       );

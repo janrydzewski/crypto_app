@@ -1,5 +1,7 @@
 import 'package:crypto_app/core/constants/icons.dart';
 import 'package:crypto_app/core/constants/margins.dart';
+import 'package:crypto_app/core/extenstions/style_extenstion.dart';
+import 'package:crypto_app/core/theme/styles/box_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
@@ -19,19 +21,13 @@ class CustomBottomNavigationBarWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: MarginsK.l30r30top10b30,
+      margin: MarginsK.l30r30top00b30,
       width: double.infinity,
       padding: MarginsK.v10,
-      decoration: BoxDecoration(
-        color: Colors.white,
+      height: 60,
+      decoration: dropShadowEffect(context).copyWith(
         borderRadius: BorderRadius.circular(20),
-        boxShadow: const [
-          BoxShadow(
-            color: Colors.black12,
-            blurRadius: 10,
-            offset: Offset(0, -5),
-          ),
-        ],
+        color: Theme.of(context).scaffoldBackgroundColor,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -77,7 +73,7 @@ class _BottomNavigationBarElementWidget extends StatelessWidget {
       onTap: () => func(index),
       child: SvgPicture.asset(
         getIcon,
-        colorFilter: const ColorFilter.mode(Colors.black, BlendMode.srcIn),
+        colorFilter: ColorFilter.mode(context.onSurface, BlendMode.srcIn),
         width: 25,
         height: 25,
       ),

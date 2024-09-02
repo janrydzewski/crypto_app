@@ -54,7 +54,7 @@ class _IntervalWidget extends StatelessWidget {
         padding: MarginsK.a10,
         decoration: BoxDecoration(
             borderRadius: MarginsK.circular10,
-            color: Colors.green.withOpacity(isSelected ? 0.3 : 0.1)),
+            color: context.secondaryColor.withOpacity(isSelected ? 0.3 : 0.1)),
         child: Text(
           interval.interval,
           style: context.titleSmall,
