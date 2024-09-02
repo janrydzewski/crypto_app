@@ -12,7 +12,7 @@ extension GoRouterExtension on GoRouter {
   }
 
   bool get addScrollController {
-    if (location() == RoutesK.list) {
+    if (location() == RoutesK.cryptoList || location() == RoutesK.home) {
       return true;
     }
     return false;

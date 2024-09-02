@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'list_bloc.dart';
+part of 'trending_crypto_list_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,165 +15,123 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$ListEvent {
-  int get pageKey => throw _privateConstructorUsedError;
+mixin _$TrendingCryptoListEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int pageKey) getCryptoList,
+    required TResult Function() getTrendingCryptoList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int pageKey)? getCryptoList,
+    TResult? Function()? getTrendingCryptoList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int pageKey)? getCryptoList,
+    TResult Function()? getTrendingCryptoList,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GetCryptoList value) getCryptoList,
+    required TResult Function(_GetTrendingCryptoList value)
+        getTrendingCryptoList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetCryptoList value)? getCryptoList,
+    TResult? Function(_GetTrendingCryptoList value)? getTrendingCryptoList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetCryptoList value)? getCryptoList,
+    TResult Function(_GetTrendingCryptoList value)? getTrendingCryptoList,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $ListEventCopyWith<ListEvent> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ListEventCopyWith<$Res> {
-  factory $ListEventCopyWith(ListEvent value, $Res Function(ListEvent) then) =
-      _$ListEventCopyWithImpl<$Res, ListEvent>;
-  @useResult
-  $Res call({int pageKey});
+abstract class $TrendingCryptoListEventCopyWith<$Res> {
+  factory $TrendingCryptoListEventCopyWith(TrendingCryptoListEvent value,
+          $Res Function(TrendingCryptoListEvent) then) =
+      _$TrendingCryptoListEventCopyWithImpl<$Res, TrendingCryptoListEvent>;
 }
 
 /// @nodoc
-class _$ListEventCopyWithImpl<$Res, $Val extends ListEvent>
-    implements $ListEventCopyWith<$Res> {
-  _$ListEventCopyWithImpl(this._value, this._then);
+class _$TrendingCryptoListEventCopyWithImpl<$Res,
+        $Val extends TrendingCryptoListEvent>
+    implements $TrendingCryptoListEventCopyWith<$Res> {
+  _$TrendingCryptoListEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? pageKey = null,
-  }) {
-    return _then(_value.copyWith(
-      pageKey: null == pageKey
-          ? _value.pageKey
-          : pageKey // ignore: cast_nullable_to_non_nullable
-              as int,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$GetCryptoListImplCopyWith<$Res>
-    implements $ListEventCopyWith<$Res> {
-  factory _$$GetCryptoListImplCopyWith(
-          _$GetCryptoListImpl value, $Res Function(_$GetCryptoListImpl) then) =
-      __$$GetCryptoListImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({int pageKey});
+abstract class _$$GetTrendingCryptoListImplCopyWith<$Res> {
+  factory _$$GetTrendingCryptoListImplCopyWith(
+          _$GetTrendingCryptoListImpl value,
+          $Res Function(_$GetTrendingCryptoListImpl) then) =
+      __$$GetTrendingCryptoListImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$GetCryptoListImplCopyWithImpl<$Res>
-    extends _$ListEventCopyWithImpl<$Res, _$GetCryptoListImpl>
-    implements _$$GetCryptoListImplCopyWith<$Res> {
-  __$$GetCryptoListImplCopyWithImpl(
-      _$GetCryptoListImpl _value, $Res Function(_$GetCryptoListImpl) _then)
+class __$$GetTrendingCryptoListImplCopyWithImpl<$Res>
+    extends _$TrendingCryptoListEventCopyWithImpl<$Res,
+        _$GetTrendingCryptoListImpl>
+    implements _$$GetTrendingCryptoListImplCopyWith<$Res> {
+  __$$GetTrendingCryptoListImplCopyWithImpl(_$GetTrendingCryptoListImpl _value,
+      $Res Function(_$GetTrendingCryptoListImpl) _then)
       : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? pageKey = null,
-  }) {
-    return _then(_$GetCryptoListImpl(
-      pageKey: null == pageKey
-          ? _value.pageKey
-          : pageKey // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
 }
 
 /// @nodoc
 
-class _$GetCryptoListImpl implements _GetCryptoList {
-  const _$GetCryptoListImpl({required this.pageKey});
-
-  @override
-  final int pageKey;
+class _$GetTrendingCryptoListImpl implements _GetTrendingCryptoList {
+  const _$GetTrendingCryptoListImpl();
 
   @override
   String toString() {
-    return 'ListEvent.getCryptoList(pageKey: $pageKey)';
+    return 'TrendingCryptoListEvent.getTrendingCryptoList()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$GetCryptoListImpl &&
-            (identical(other.pageKey, pageKey) || other.pageKey == pageKey));
+            other is _$GetTrendingCryptoListImpl);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, pageKey);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$GetCryptoListImplCopyWith<_$GetCryptoListImpl> get copyWith =>
-      __$$GetCryptoListImplCopyWithImpl<_$GetCryptoListImpl>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int pageKey) getCryptoList,
+    required TResult Function() getTrendingCryptoList,
   }) {
-    return getCryptoList(pageKey);
+    return getTrendingCryptoList();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int pageKey)? getCryptoList,
+    TResult? Function()? getTrendingCryptoList,
   }) {
-    return getCryptoList?.call(pageKey);
+    return getTrendingCryptoList?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int pageKey)? getCryptoList,
+    TResult Function()? getTrendingCryptoList,
     required TResult orElse(),
   }) {
-    if (getCryptoList != null) {
-      return getCryptoList(pageKey);
+    if (getTrendingCryptoList != null) {
+      return getTrendingCryptoList();
     }
     return orElse();
   }
@@ -181,51 +139,44 @@ class _$GetCryptoListImpl implements _GetCryptoList {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GetCryptoList value) getCryptoList,
+    required TResult Function(_GetTrendingCryptoList value)
+        getTrendingCryptoList,
   }) {
-    return getCryptoList(this);
+    return getTrendingCryptoList(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetCryptoList value)? getCryptoList,
+    TResult? Function(_GetTrendingCryptoList value)? getTrendingCryptoList,
   }) {
-    return getCryptoList?.call(this);
+    return getTrendingCryptoList?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetCryptoList value)? getCryptoList,
+    TResult Function(_GetTrendingCryptoList value)? getTrendingCryptoList,
     required TResult orElse(),
   }) {
-    if (getCryptoList != null) {
-      return getCryptoList(this);
+    if (getTrendingCryptoList != null) {
+      return getTrendingCryptoList(this);
     }
     return orElse();
   }
 }
 
-abstract class _GetCryptoList implements ListEvent {
-  const factory _GetCryptoList({required final int pageKey}) =
-      _$GetCryptoListImpl;
-
-  @override
-  int get pageKey;
-  @override
-  @JsonKey(ignore: true)
-  _$$GetCryptoListImplCopyWith<_$GetCryptoListImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+abstract class _GetTrendingCryptoList implements TrendingCryptoListEvent {
+  const factory _GetTrendingCryptoList() = _$GetTrendingCryptoListImpl;
 }
 
 /// @nodoc
-mixin _$ListState {
+mixin _$TrendingCryptoListState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<CryptoEntity> cryptoList) data,
+    required TResult Function(List<TrendingCryptoEntity> cryptoList) data,
     required TResult Function(Failure failure) failure,
   }) =>
       throw _privateConstructorUsedError;
@@ -233,7 +184,7 @@ mixin _$ListState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<CryptoEntity> cryptoList)? data,
+    TResult? Function(List<TrendingCryptoEntity> cryptoList)? data,
     TResult? Function(Failure failure)? failure,
   }) =>
       throw _privateConstructorUsedError;
@@ -241,7 +192,7 @@ mixin _$ListState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<CryptoEntity> cryptoList)? data,
+    TResult Function(List<TrendingCryptoEntity> cryptoList)? data,
     TResult Function(Failure failure)? failure,
     required TResult orElse(),
   }) =>
@@ -274,15 +225,17 @@ mixin _$ListState {
 }
 
 /// @nodoc
-abstract class $ListStateCopyWith<$Res> {
-  factory $ListStateCopyWith(ListState value, $Res Function(ListState) then) =
-      _$ListStateCopyWithImpl<$Res, ListState>;
+abstract class $TrendingCryptoListStateCopyWith<$Res> {
+  factory $TrendingCryptoListStateCopyWith(TrendingCryptoListState value,
+          $Res Function(TrendingCryptoListState) then) =
+      _$TrendingCryptoListStateCopyWithImpl<$Res, TrendingCryptoListState>;
 }
 
 /// @nodoc
-class _$ListStateCopyWithImpl<$Res, $Val extends ListState>
-    implements $ListStateCopyWith<$Res> {
-  _$ListStateCopyWithImpl(this._value, this._then);
+class _$TrendingCryptoListStateCopyWithImpl<$Res,
+        $Val extends TrendingCryptoListState>
+    implements $TrendingCryptoListStateCopyWith<$Res> {
+  _$TrendingCryptoListStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -299,7 +252,7 @@ abstract class _$$InitialImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$InitialImplCopyWithImpl<$Res>
-    extends _$ListStateCopyWithImpl<$Res, _$InitialImpl>
+    extends _$TrendingCryptoListStateCopyWithImpl<$Res, _$InitialImpl>
     implements _$$InitialImplCopyWith<$Res> {
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
@@ -313,7 +266,7 @@ class _$InitialImpl implements _Initial {
 
   @override
   String toString() {
-    return 'ListState.initial()';
+    return 'TrendingCryptoListState.initial()';
   }
 
   @override
@@ -330,7 +283,7 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<CryptoEntity> cryptoList) data,
+    required TResult Function(List<TrendingCryptoEntity> cryptoList) data,
     required TResult Function(Failure failure) failure,
   }) {
     return initial();
@@ -341,7 +294,7 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<CryptoEntity> cryptoList)? data,
+    TResult? Function(List<TrendingCryptoEntity> cryptoList)? data,
     TResult? Function(Failure failure)? failure,
   }) {
     return initial?.call();
@@ -352,7 +305,7 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<CryptoEntity> cryptoList)? data,
+    TResult Function(List<TrendingCryptoEntity> cryptoList)? data,
     TResult Function(Failure failure)? failure,
     required TResult orElse(),
   }) {
@@ -400,7 +353,7 @@ class _$InitialImpl implements _Initial {
   }
 }
 
-abstract class _Initial implements ListState {
+abstract class _Initial implements TrendingCryptoListState {
   const factory _Initial() = _$InitialImpl;
 }
 
@@ -413,7 +366,7 @@ abstract class _$$LoadingImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$ListStateCopyWithImpl<$Res, _$LoadingImpl>
+    extends _$TrendingCryptoListStateCopyWithImpl<$Res, _$LoadingImpl>
     implements _$$LoadingImplCopyWith<$Res> {
   __$$LoadingImplCopyWithImpl(
       _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
@@ -427,7 +380,7 @@ class _$LoadingImpl implements _Loading {
 
   @override
   String toString() {
-    return 'ListState.loading()';
+    return 'TrendingCryptoListState.loading()';
   }
 
   @override
@@ -444,7 +397,7 @@ class _$LoadingImpl implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<CryptoEntity> cryptoList) data,
+    required TResult Function(List<TrendingCryptoEntity> cryptoList) data,
     required TResult Function(Failure failure) failure,
   }) {
     return loading();
@@ -455,7 +408,7 @@ class _$LoadingImpl implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<CryptoEntity> cryptoList)? data,
+    TResult? Function(List<TrendingCryptoEntity> cryptoList)? data,
     TResult? Function(Failure failure)? failure,
   }) {
     return loading?.call();
@@ -466,7 +419,7 @@ class _$LoadingImpl implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<CryptoEntity> cryptoList)? data,
+    TResult Function(List<TrendingCryptoEntity> cryptoList)? data,
     TResult Function(Failure failure)? failure,
     required TResult orElse(),
   }) {
@@ -514,7 +467,7 @@ class _$LoadingImpl implements _Loading {
   }
 }
 
-abstract class _Loading implements ListState {
+abstract class _Loading implements TrendingCryptoListState {
   const factory _Loading() = _$LoadingImpl;
 }
 
@@ -524,12 +477,12 @@ abstract class _$$DataImplCopyWith<$Res> {
           _$DataImpl value, $Res Function(_$DataImpl) then) =
       __$$DataImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<CryptoEntity> cryptoList});
+  $Res call({List<TrendingCryptoEntity> cryptoList});
 }
 
 /// @nodoc
 class __$$DataImplCopyWithImpl<$Res>
-    extends _$ListStateCopyWithImpl<$Res, _$DataImpl>
+    extends _$TrendingCryptoListStateCopyWithImpl<$Res, _$DataImpl>
     implements _$$DataImplCopyWith<$Res> {
   __$$DataImplCopyWithImpl(_$DataImpl _value, $Res Function(_$DataImpl) _then)
       : super(_value, _then);
@@ -543,7 +496,7 @@ class __$$DataImplCopyWithImpl<$Res>
       null == cryptoList
           ? _value._cryptoList
           : cryptoList // ignore: cast_nullable_to_non_nullable
-              as List<CryptoEntity>,
+              as List<TrendingCryptoEntity>,
     ));
   }
 }
@@ -551,12 +504,12 @@ class __$$DataImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$DataImpl implements _Data {
-  const _$DataImpl(final List<CryptoEntity> cryptoList)
+  const _$DataImpl(final List<TrendingCryptoEntity> cryptoList)
       : _cryptoList = cryptoList;
 
-  final List<CryptoEntity> _cryptoList;
+  final List<TrendingCryptoEntity> _cryptoList;
   @override
-  List<CryptoEntity> get cryptoList {
+  List<TrendingCryptoEntity> get cryptoList {
     if (_cryptoList is EqualUnmodifiableListView) return _cryptoList;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_cryptoList);
@@ -564,7 +517,7 @@ class _$DataImpl implements _Data {
 
   @override
   String toString() {
-    return 'ListState.data(cryptoList: $cryptoList)';
+    return 'TrendingCryptoListState.data(cryptoList: $cryptoList)';
   }
 
   @override
@@ -591,7 +544,7 @@ class _$DataImpl implements _Data {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<CryptoEntity> cryptoList) data,
+    required TResult Function(List<TrendingCryptoEntity> cryptoList) data,
     required TResult Function(Failure failure) failure,
   }) {
     return data(cryptoList);
@@ -602,7 +555,7 @@ class _$DataImpl implements _Data {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<CryptoEntity> cryptoList)? data,
+    TResult? Function(List<TrendingCryptoEntity> cryptoList)? data,
     TResult? Function(Failure failure)? failure,
   }) {
     return data?.call(cryptoList);
@@ -613,7 +566,7 @@ class _$DataImpl implements _Data {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<CryptoEntity> cryptoList)? data,
+    TResult Function(List<TrendingCryptoEntity> cryptoList)? data,
     TResult Function(Failure failure)? failure,
     required TResult orElse(),
   }) {
@@ -661,10 +614,10 @@ class _$DataImpl implements _Data {
   }
 }
 
-abstract class _Data implements ListState {
-  const factory _Data(final List<CryptoEntity> cryptoList) = _$DataImpl;
+abstract class _Data implements TrendingCryptoListState {
+  const factory _Data(final List<TrendingCryptoEntity> cryptoList) = _$DataImpl;
 
-  List<CryptoEntity> get cryptoList;
+  List<TrendingCryptoEntity> get cryptoList;
   @JsonKey(ignore: true)
   _$$DataImplCopyWith<_$DataImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -681,7 +634,7 @@ abstract class _$$FailureImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$FailureImplCopyWithImpl<$Res>
-    extends _$ListStateCopyWithImpl<$Res, _$FailureImpl>
+    extends _$TrendingCryptoListStateCopyWithImpl<$Res, _$FailureImpl>
     implements _$$FailureImplCopyWith<$Res> {
   __$$FailureImplCopyWithImpl(
       _$FailureImpl _value, $Res Function(_$FailureImpl) _then)
@@ -711,7 +664,7 @@ class _$FailureImpl implements _Failure {
 
   @override
   String toString() {
-    return 'ListState.failure(failure: $failure)';
+    return 'TrendingCryptoListState.failure(failure: $failure)';
   }
 
   @override
@@ -736,7 +689,7 @@ class _$FailureImpl implements _Failure {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<CryptoEntity> cryptoList) data,
+    required TResult Function(List<TrendingCryptoEntity> cryptoList) data,
     required TResult Function(Failure failure) failure,
   }) {
     return failure(this.failure);
@@ -747,7 +700,7 @@ class _$FailureImpl implements _Failure {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<CryptoEntity> cryptoList)? data,
+    TResult? Function(List<TrendingCryptoEntity> cryptoList)? data,
     TResult? Function(Failure failure)? failure,
   }) {
     return failure?.call(this.failure);
@@ -758,7 +711,7 @@ class _$FailureImpl implements _Failure {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<CryptoEntity> cryptoList)? data,
+    TResult Function(List<TrendingCryptoEntity> cryptoList)? data,
     TResult Function(Failure failure)? failure,
     required TResult orElse(),
   }) {
@@ -806,7 +759,7 @@ class _$FailureImpl implements _Failure {
   }
 }
 
-abstract class _Failure implements ListState {
+abstract class _Failure implements TrendingCryptoListState {
   const factory _Failure(final Failure failure) = _$FailureImpl;
 
   Failure get failure;

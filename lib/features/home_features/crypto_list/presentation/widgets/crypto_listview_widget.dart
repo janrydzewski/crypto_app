@@ -3,8 +3,8 @@ import 'package:crypto_app/core/constants/margins.dart';
 import 'package:crypto_app/core/extenstions/style_extenstion.dart';
 import 'package:crypto_app/core/router/routes.dart';
 import 'package:crypto_app/core/theme/styles/box_styles.dart';
-import 'package:crypto_app/features/home_features/list/domain/entities/crypto_entity.dart';
-import 'package:crypto_app/features/home_features/list/presentation/bloc/list_bloc.dart';
+import 'package:crypto_app/features/home_features/crypto_list/domain/entities/crypto_entity.dart';
+import 'package:crypto_app/features/home_features/crypto_list/presentation/bloc/crypto_list_bloc.dart';
 import 'package:crypto_app/shared/custom_cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -59,7 +59,9 @@ class _CryptoListViewWidgetState extends State<CryptoListViewWidget> {
       setState(() {
         pageKey++;
       });
-      context.read<ListBloc>().add(ListEvent.getCryptoList(pageKey: pageKey));
+      context
+          .read<CryptoListBloc>()
+          .add(CryptoListEvent.getCryptoList(pageKey: pageKey));
     }
   }
 }
@@ -72,7 +74,7 @@ class _ListViewElementWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => context.push(
-          "${RoutesK.list}/${RoutesK.details}".replaceAll(':id', crypto.id)),
+          "${RoutesK.cryptoList}/${RoutesK.details}".replaceAll(':id', crypto.id)),
       child: Padding(
         padding: MarginsK.h10v4,
         child: Container(

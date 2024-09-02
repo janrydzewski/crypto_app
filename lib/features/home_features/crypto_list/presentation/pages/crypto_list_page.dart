@@ -1,27 +1,27 @@
 import 'package:crypto_app/core/di/injectable_config.dart';
-import 'package:crypto_app/features/home_features/list/presentation/bloc/list_bloc.dart';
-import 'package:crypto_app/features/home_features/list/presentation/widgets/crypto_listview_widget.dart';
+import 'package:crypto_app/features/home_features/crypto_list/presentation/bloc/crypto_list_bloc.dart';
+import 'package:crypto_app/features/home_features/crypto_list/presentation/widgets/crypto_listview_widget.dart';
 import 'package:crypto_app/shared/widgets/crypto_scaffold_widget.dart';
 import 'package:crypto_app/shared/widgets/error_widget.dart';
 import 'package:crypto_app/shared/widgets/loading_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ListPage extends StatelessWidget {
-  const ListPage({super.key});
+class CryptoListPage extends StatelessWidget {
+  const CryptoListPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) =>
-          ListBloc(locator())..add(const ListEvent.getCryptoList(pageKey: 1)),
-      child: const _ListView(),
+          CryptoListBloc(locator())..add(const CryptoListEvent.getCryptoList(pageKey: 1)),
+      child: const _CryptoListView(),
     );
   }
 }
 
-class _ListView extends StatelessWidget {
-  const _ListView();
+class _CryptoListView extends StatelessWidget {
+  const _CryptoListView();
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +32,7 @@ class _ListView extends StatelessWidget {
   }
 
   _buildListView() {
-    return BlocBuilder<ListBloc, ListState>(
+    return BlocBuilder<CryptoListBloc, CryptoListState>(
       builder: (context, state) {
         return state.when(
           initial: () => const LoadingWidget(),
