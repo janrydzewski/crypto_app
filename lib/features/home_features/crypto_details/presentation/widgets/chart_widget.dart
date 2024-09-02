@@ -13,12 +13,7 @@ class ChartWidget extends StatelessWidget {
     return AspectRatio(
       aspectRatio: 1.70,
       child: Padding(
-        padding: const EdgeInsets.only(
-          right: 0,
-          left: 0,
-          top: 36,
-          bottom: 24,
-        ),
+        padding: const EdgeInsets.only(right: 0, left: 0, top: 36, bottom: 24),
         child: LineChart(
           mainData(prices.prices, context, isLoaded),
           duration: const Duration(seconds: 2),

@@ -1,6 +1,7 @@
 import 'package:crypto_app/core/constants/margins.dart';
 import 'package:crypto_app/core/extenstions/style_extenstion.dart';
 import 'package:crypto_app/features/home_features/crypto_details/domain/entities/crypto_details_entity.dart';
+import 'package:crypto_app/shared/custom_cached_network_image.dart';
 
 import 'package:flutter/material.dart';
 
@@ -15,7 +16,7 @@ class DetailsWidget extends StatelessWidget {
         SizedBox(
           width: 80,
           height: 80,
-          child: Image.network(cryptoDetails.image.large),
+          child: CustomCachedNetworkImage(imageUrl: cryptoDetails.image.large),
         ),
         const SizedBox(
           height: 20,
@@ -36,14 +37,20 @@ class DetailsWidget extends StatelessWidget {
         padding: MarginsK.h10v4,
         decoration: BoxDecoration(
             borderRadius: MarginsK.circular10,
-            color: isPositive
-                ? Colors.green.withOpacity(0.2)
-                : Colors.red.withOpacity(0.2)),
+            color: !isNeutral
+                ? isPositive
+                    ? Colors.green.withOpacity(0.2)
+                    : Colors.red.withOpacity(0.2)
+                : Colors.grey.withOpacity(0.2)),
         child: Text(
-            "${isPositive ? "+" : "-"}${cryptoDetails.marketData.priceChangePercentage24h.toStringAsFixed(1)}%"),
+            "${isPositive ? "+" : ""}${cryptoDetails.marketData.priceChangePercentage24h.toStringAsFixed(1)}%"),
       );
 
   bool get isPositive {
     return cryptoDetails.marketData.priceChangePercentage24h > 0;
+  }
+
+  bool get isNeutral {
+    return cryptoDetails.marketData.priceChangePercentage24h == 0;
   }
 }
