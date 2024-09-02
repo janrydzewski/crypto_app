@@ -8,6 +8,7 @@ class MarginsK extends Constants {
   static const a16 = EdgeInsets.all(16);
 
   static const h10 = EdgeInsets.symmetric(horizontal: 10);
+  static const h40 = EdgeInsets.symmetric(horizontal: 40);
 
   static const v10 = EdgeInsets.symmetric(vertical: 10);
 

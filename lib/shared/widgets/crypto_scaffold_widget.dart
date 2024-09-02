@@ -1,5 +1,6 @@
 import 'package:crypto_app/core/addons/global.dart';
 import 'package:crypto_app/core/extenstions/go_router_extenstion.dart';
+import 'package:crypto_app/core/extenstions/style_extenstion.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -55,7 +56,18 @@ class CryptoScaffold extends StatelessWidget {
           SliverToBoxAdapter(
             child: Padding(
               padding: const EdgeInsets.only(bottom: 20),
-              child: body,
+              child: Container(
+                  height: MediaQuery.of(context).size.height,
+                  decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [
+                        context.secondaryColor.withOpacity(0.01),
+                        context.secondaryColor.withOpacity(0.3),
+                        context.secondaryColor.withOpacity(0.8),
+                      ])),
+                  child: body),
             ),
           ),
         ],
