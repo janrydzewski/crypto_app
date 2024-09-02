@@ -4,9 +4,11 @@ import 'dart:io';
 
 import 'package:crypto_app/core/constants/api_routes.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:injectable/injectable.dart';
+import 'package:crypto_app/core/network/error_handling.dart';
 
-abstract class DioFactory {
+abstract class DioFactory with ErrorHandling {
   abstract Dio _dio;
 
   Dio getDio({
@@ -15,6 +17,8 @@ abstract class DioFactory {
   });
 
   Future<Map<String, dynamic>> get(String route,
+      {Map<String, dynamic>? queryParameters});
+  Future<List<dynamic>> getList(String route,
       {Map<String, dynamic>? queryParameters});
 }
 
@@ -33,7 +37,9 @@ class DioFactoryImpl extends DioFactory {
           responseType: ResponseType.json,
           connectTimeout: const Duration(seconds: 480),
           sendTimeout: const Duration(seconds: 480),
-          headers: headers,
+          headers: headers ?? {
+            'x-cg-demo-api-key': dotenv.env['API_KEY'],
+          },
           validateStatus: (int? status) =>
               status! >= HttpStatus.ok && status <= HttpStatus.imUsed))
         ..interceptors.addAll([]);
@@ -53,7 +59,26 @@ class DioFactoryImpl extends DioFactory {
 
       return result.data;
     } catch (e) {
-      throw Exception(e);
+      throw handleException(e);
+    }
+  }
+
+  @override
+  Future<List<dynamic>> getList(
+    String route, {
+    Map<String, dynamic>? queryParameters,
+    Map<String, dynamic>? headers,
+  }) async {
+    try {
+      final result = await _dio.get(
+        route,
+        queryParameters: queryParameters,
+        options: Options(headers: headers),
+      );
+
+      return result.data;
+    } catch (e) {
+      throw handleException(e);
     }
   }
 }

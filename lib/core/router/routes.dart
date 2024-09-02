@@ -4,6 +4,7 @@ class RoutesK extends Constants {
   //SECTION - [APP]
   static const home = "/";
   static const list = "/list";
+  
   //!SECTION
 
   //SECTION - [SHARED]
