@@ -16,7 +16,11 @@ class DetailsWidget extends StatelessWidget {
         SizedBox(
           width: 80,
           height: 80,
-          child: CustomCachedNetworkImage(imageUrl: cryptoDetails.image.large),
+          child: ClipRRect(
+            borderRadius: MarginsK.circular40,
+            child:
+                CustomCachedNetworkImage(imageUrl: cryptoDetails.image.large),
+          ),
         ),
         const SizedBox(
           height: 20,

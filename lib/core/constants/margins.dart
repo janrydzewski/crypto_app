@@ -5,6 +5,7 @@ class MarginsK extends Constants {
   static const t30 = EdgeInsets.only(top: 30);
 
   static const a10 = EdgeInsets.all(10);
+  static const a16 = EdgeInsets.all(16);
 
   static const h10 = EdgeInsets.symmetric(horizontal: 10);
 
@@ -19,4 +20,5 @@ class MarginsK extends Constants {
   static const l30r30top10b30 = EdgeInsets.fromLTRB(30, 10, 30, 30);
 
   static const circular10 = BorderRadius.all(Radius.circular(10));
+  static const circular40 = BorderRadius.all(Radius.circular(40));
 }
