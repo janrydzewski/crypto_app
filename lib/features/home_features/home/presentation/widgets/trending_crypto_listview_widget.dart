@@ -1,4 +1,3 @@
-import 'package:crypto_app/core/addons/global.dart';
 import 'package:crypto_app/core/constants/margins.dart';
 import 'package:crypto_app/core/extenstions/style_extenstion.dart';
 import 'package:crypto_app/core/router/routes.dart';
@@ -27,16 +26,16 @@ class _CryptoListViewWidgetState extends State<TrendingCryptoListviewWidget> {
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
         itemBuilder: (context, index) {
-          return ListViewElementWidget(
+          return _ListViewElementWidget(
               trendingCrypto: widget.trendingCryptoList[index]);
         },
         itemCount: widget.trendingCryptoList.length);
   }
 }
 
-class ListViewElementWidget extends StatelessWidget {
+class _ListViewElementWidget extends StatelessWidget {
   final TrendingCryptoEntity trendingCrypto;
-  const ListViewElementWidget({required this.trendingCrypto});
+  const _ListViewElementWidget({required this.trendingCrypto});
 
   @override
   Widget build(BuildContext context) {

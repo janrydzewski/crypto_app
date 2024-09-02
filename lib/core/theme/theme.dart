@@ -126,6 +126,13 @@ class MaterialTheme {
       brightness: colorScheme.brightness,
       colorScheme: colorScheme,
       fontFamily: "Montserrat",
+      shadowColor: Colors.red,
+      // appBarTheme: AppBarTheme(
+      //   backgroundColor: Colors.transparent,
+      //   foregroundColor: colorScheme.onSurface,
+      //   actionsIconTheme: IconThemeData(color: colorScheme.onSurface),
+      //   iconTheme: IconThemeData(color: colorScheme.onSurface),
+      // ),
       textTheme: const TextTheme(
         displayLarge: TextStyle(
             fontSize: 96.0, fontWeight: FontWeight.w300, letterSpacing: -1.5),

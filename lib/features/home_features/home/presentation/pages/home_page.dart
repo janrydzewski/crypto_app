@@ -1,6 +1,5 @@
 import 'package:crypto_app/core/di/injectable_config.dart';
 import 'package:crypto_app/core/extenstions/style_extenstion.dart';
-import 'package:crypto_app/features/home_features/crypto_list/presentation/widgets/crypto_listview_widget.dart';
 import 'package:crypto_app/features/home_features/home/presentation/bloc/trending_crypto_list_bloc.dart';
 import 'package:crypto_app/features/home_features/home/presentation/widgets/home_buttons_widget.dart';
 import 'package:crypto_app/features/home_features/home/presentation/widgets/trending_crypto_listview_widget.dart';
@@ -55,7 +54,8 @@ class _HomeView extends StatelessWidget {
                   failure: (failure) => CustomErrorWidget(failure: failure),
                 );
               },
-            )
+            ),
+            const SizedBox(height: 100),
           ],
         ),
       ),
