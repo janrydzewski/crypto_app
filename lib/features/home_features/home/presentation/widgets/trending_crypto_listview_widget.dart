@@ -6,19 +6,12 @@ import 'package:crypto_app/features/home_features/crypto_list/domain/entities/tr
 import 'package:crypto_app/shared/custom_cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:loading_animation_widget/loading_animation_widget.dart';
 
-class TrendingCryptoListviewWidget extends StatefulWidget {
+class TrendingCryptoListViewWidget extends StatelessWidget {
   final List<TrendingCryptoEntity> trendingCryptoList;
-  const TrendingCryptoListviewWidget(
+  const TrendingCryptoListViewWidget(
       {super.key, required this.trendingCryptoList});
 
-  @override
-  State<TrendingCryptoListviewWidget> createState() =>
-      _CryptoListViewWidgetState();
-}
-
-class _CryptoListViewWidgetState extends State<TrendingCryptoListviewWidget> {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -27,9 +20,9 @@ class _CryptoListViewWidgetState extends State<TrendingCryptoListviewWidget> {
         physics: const NeverScrollableScrollPhysics(),
         itemBuilder: (context, index) {
           return _ListViewElementWidget(
-              trendingCrypto: widget.trendingCryptoList[index]);
+              trendingCrypto: trendingCryptoList[index]);
         },
-        itemCount: widget.trendingCryptoList.length);
+        itemCount: trendingCryptoList.length);
   }
 }
 
@@ -47,7 +40,7 @@ class _ListViewElementWidget extends StatelessWidget {
         child: Container(
           decoration: dropShadowEffect(context)
               .copyWith(color: Theme.of(context).scaffoldBackgroundColor),
-          margin: MarginsK.h10v10,
+          margin: MarginsK.h10v4,
           padding: MarginsK.h10v15,
           child: Row(
             children: [
@@ -85,20 +78,6 @@ class _ListViewElementWidget extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-}
-
-class _LoadingWidget extends StatelessWidget {
-  const _LoadingWidget();
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: MarginsK.v10,
-      child: Center(
-          child: LoadingAnimationWidget.threeArchedCircle(
-              color: context.primaryColor, size: 30)),
     );
   }
 }

@@ -13,6 +13,13 @@ class TrendingCryptoDataEntity with _$TrendingCryptoDataEntity {
     required Map<String, dynamic> priceChangePercentage,
   }) = _TrendingCryptoDataEntity;
 
+  factory TrendingCryptoDataEntity.example() => TrendingCryptoDataEntity(
+        price: 1.0,
+        priceChangePercentage: {
+          'usd': 1.0,
+        },
+      );
+
   factory TrendingCryptoDataEntity.fromJson(Map<String, dynamic> json) =>
       _$TrendingCryptoDataEntityFromJson(json);
 }

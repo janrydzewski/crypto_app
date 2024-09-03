@@ -16,6 +16,14 @@ class TrendingCryptoEntity with _$TrendingCryptoEntity {
     @JsonKey(name: 'data') required TrendingCryptoDataEntity trendingCryptoData,
   }) = _TrendingCryptoEntity;
 
+  factory TrendingCryptoEntity.example() => TrendingCryptoEntity(
+        id: 'bitcoin',
+        symbol: 'btc',
+        name: 'Bitcoin',
+        image: 'https://assets.coingecko.com/coins/images/1/large/bitcoin.png',
+        trendingCryptoData: TrendingCryptoDataEntity.example(),
+      );
+
   factory TrendingCryptoEntity.fromJson(Map<String, dynamic> json) =>
       _$TrendingCryptoEntityFromJson(json);
 }
