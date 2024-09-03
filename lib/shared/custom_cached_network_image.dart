@@ -3,6 +3,7 @@ import 'package:crypto_app/core/extenstions/style_extenstion.dart';
 import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 
+// Custom cached network image
 class CustomCachedNetworkImage extends StatelessWidget {
   final String imageUrl;
   final BoxFit? boxFit;

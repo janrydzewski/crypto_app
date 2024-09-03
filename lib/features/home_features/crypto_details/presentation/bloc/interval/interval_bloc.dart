@@ -11,6 +11,7 @@ class IntervalBloc extends Bloc<IntervalEvent, IntervalState> {
     on<_ChangeInterval>(_onChangeInterval);
   }
 
+  // Function to change interval
   void _onChangeInterval(_ChangeInterval event, Emitter<IntervalState> emit) {
     emit(IntervalState.data(event.interval));
   }

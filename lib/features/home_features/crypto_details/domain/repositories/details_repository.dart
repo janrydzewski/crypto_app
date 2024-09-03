@@ -7,8 +7,10 @@ import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 
 abstract class DetailsRepository {
+  // Function to get crypto details - CryptoDetailsEntity
   Future<Either<Failure, CryptoDetailsEntity>> getCryptoDetails(
       String cryptoId);
+  // Function to get crypto chart data - PricesEntity
   Future<Either<Failure, PricesEntity>> getCryptoChartData(
       String cryptoId, ChartDataEntity chartDataEntity);
 }
@@ -19,6 +21,7 @@ class DetailsRepositoryImpl extends DetailsRepository {
 
   DetailsRepositoryImpl({required this.detailsDatasource});
 
+  // Implementation of the function to get crypto details
   @override
   Future<Either<Failure, CryptoDetailsEntity>> getCryptoDetails(
       String cryptoId) async {
@@ -30,6 +33,7 @@ class DetailsRepositoryImpl extends DetailsRepository {
     }
   }
 
+  // Implementation of the function to get crypto chart data
   @override
   Future<Either<Failure, PricesEntity>> getCryptoChartData(
       String cryptoId, ChartDataEntity chartDataEntity) async {

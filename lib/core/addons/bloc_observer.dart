@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 
+// Track the actions of each block in the console
 class CustomBlocObserver extends BlocObserver {
   @override
   void onCreate(BlocBase bloc) {

@@ -1,5 +1,6 @@
 import 'package:crypto_app/features/other_features/currency/domain/entities/currency_entity.dart';
 
+// Extension to format currency
 extension CurrencyFormatting on CurrencyEntity {
   String format(double amount) {
     if (isSymbolOnRight) {
@@ -10,6 +11,7 @@ extension CurrencyFormatting on CurrencyEntity {
   }
 }
 
+// Extension to place currency symbol
 extension CurrencySymbolPlacement on CurrencyEntity {
   Map<String, String?> getCurrencyPrefixSuffix() {
     if (isSymbolOnRight) {

@@ -5,6 +5,7 @@ import 'package:crypto_app/features/home_features/home/presentation/bloc/user_ba
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+// Widget to build the balance of user account
 class UserBalanceWidget extends StatelessWidget {
   final UserBalanceState state;
   const UserBalanceWidget({super.key, required this.state});

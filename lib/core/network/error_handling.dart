@@ -5,12 +5,16 @@ import 'dart:io';
 import 'package:crypto_app/core/network/error/exceptions.dart';
 import 'package:dio/dio.dart';
 
+// Mixin to handle errors
 mixin ErrorHandling {
+
+  // Function to handle default exceptions
   Exception defaultException(dynamic error, StackTrace? st) {
     log("Error: $error, StackTrace: $st");
     return error;
   }
 
+  // Function to handle exceptions
   Exception handleException(dynamic error, {StackTrace? st}) {
     log("Error: $error, StackTrace: $st");
     if (error is Response) {
@@ -20,7 +24,8 @@ mixin ErrorHandling {
     }
     return error;
   }
-
+  
+  // Function to handle response exceptions
   Exception responseException(Response response) {
     switch (response.statusCode) {
       case HttpStatus.forbidden:
@@ -41,6 +46,7 @@ mixin ErrorHandling {
     return ServerException(message: response.data);
   }
 
+  // Function to handle Dio exceptions
   Exception dioException(DioException dio) {
     switch (dio.type) {
       case DioExceptionType.sendTimeout:

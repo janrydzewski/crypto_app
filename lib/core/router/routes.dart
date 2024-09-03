@@ -1,5 +1,6 @@
 import 'package:crypto_app/core/constants/constants.dart';
 
+// File to store all routes
 class RoutesK extends Constants {
   //SECTION - [APP]
   static const home = "/";

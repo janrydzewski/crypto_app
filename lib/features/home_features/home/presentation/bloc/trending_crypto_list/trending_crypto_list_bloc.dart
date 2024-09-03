@@ -16,6 +16,7 @@ class TrendingCryptoListBloc
     on<_GetTrendingCryptoList>(_onGetTrendingCryptoList);
   }
 
+  // Function to get trending crypto list
   _onGetTrendingCryptoList(_GetTrendingCryptoList event,
       Emitter<TrendingCryptoListState> emit) async {
     final result = await _getTrendingCryptoListUsecase.call();

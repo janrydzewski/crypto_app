@@ -5,6 +5,7 @@ import 'package:crypto_app/features/home_features/crypto_details/domain/reposito
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 
+// Usecase to get crypto prices
 @LazySingleton()
 class GetCryptoPricesUsecase {
   final DetailsRepository detailsRepository;

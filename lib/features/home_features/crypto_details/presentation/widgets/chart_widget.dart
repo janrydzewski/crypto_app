@@ -6,6 +6,7 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+// Widget to build the chart
 class ChartWidget extends StatelessWidget {
   final PricesEntity prices;
   final bool isLoaded;
@@ -15,17 +16,15 @@ class ChartWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return AspectRatio(
       aspectRatio: 1.70,
-      child: Padding(
-        padding: const EdgeInsets.only(right: 0, left: 0, top: 36, bottom: 24),
-        child: LineChart(
-          mainData(prices.prices, context, isLoaded),
-          duration: const Duration(seconds: 2),
-          curve: Curves.easeInOut,
-        ),
+      child: LineChart(
+        mainData(prices.prices, context, isLoaded),
+        duration: const Duration(seconds: 2),
+        curve: Curves.easeInOut,
       ),
     );
   }
 
+  // Function to build the chart data
   LineChartData mainData(
       final List<List<double>> prices, BuildContext context, bool isLoaded) {
     final currency = context.watch<UserBalanceCubit>().state.currency;

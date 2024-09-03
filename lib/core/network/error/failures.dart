@@ -5,6 +5,7 @@ import 'dart:io';
 import 'package:crypto_app/core/network/error/exceptions.dart';
 import 'package:equatable/equatable.dart';
 
+// Enum to store error codes
 enum ErrorCode {
   UNPROCESSABLE,
   CONFLICT,
@@ -22,7 +23,8 @@ class Failure extends Equatable {
   final String message;
 
   const Failure({required this.code, required this.message});
-
+  
+  // Function to create a failure object from an exception
   factory Failure.fromException(dynamic exception) {
     final exceptionMap = {
       UnprocessableException: ErrorCode.UNPROCESSABLE,

@@ -21,11 +21,13 @@ class CryptoListBloc extends Bloc<CryptoListEvent, CryptoListState> {
       : super(const _Initial()) {
     on<_GetCryptoList>(_onGetCryptoList);
 
+    // Listen to the user balance cubit stream
     _userBalanceSubscription = _userBalanceCubit.stream.listen((state) {
       add(const _GetCryptoList(pageKey: 0, isForced: true));
     });
   }
 
+  // Function to get crypto list
   _onGetCryptoList(_GetCryptoList event, Emitter<CryptoListState> emit) async {
     if (event.isForced) {
       emit(const _Initial());

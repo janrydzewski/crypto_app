@@ -5,6 +5,7 @@ import 'package:crypto_app/features/home_features/crypto_details/presentation/bl
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+// Widget to pick the interval
 class PickIntervalWidget extends StatelessWidget {
   const PickIntervalWidget({super.key});
 
@@ -37,6 +38,7 @@ class PickIntervalWidget extends StatelessWidget {
   }
 }
 
+// Private widget to build the interval
 class _IntervalWidget extends StatelessWidget {
   final IntervalEntity interval;
   final bool isSelected;
@@ -54,7 +56,7 @@ class _IntervalWidget extends StatelessWidget {
         padding: MarginsK.a10,
         decoration: BoxDecoration(
             borderRadius: MarginsK.circular10,
-            color: context.secondaryColor.withOpacity(isSelected ? 0.3 : 0.1)),
+            color: context.secondaryColor.withOpacity(isSelected ? 0.9 : 0.2)),
         child: Text(
           interval.interval,
           style: context.titleSmall,

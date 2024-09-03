@@ -6,8 +6,10 @@ import 'package:crypto_app/features/home_features/crypto_list/domain/entities/tr
 import 'package:injectable/injectable.dart';
 
 abstract class CryptoListDatasource {
+  // Function to get crypto list - List<CryptoEntity>
   Future<List<CryptoEntity>> getCryptoList(
       CryptoListParamEntity cryptoListParam);
+  // Function to get trending crypto list - List<TrendingCryptoEntity>
   Future<List<TrendingCryptoEntity>> getTrendingCryptoList();
 }
 
@@ -17,6 +19,7 @@ class CryptoListDatasourceImpl implements CryptoListDatasource {
 
   CryptoListDatasourceImpl({required this.dioFactory});
 
+  // Implementation of the function to get crypto list
   @override
   Future<List<CryptoEntity>> getCryptoList(
       CryptoListParamEntity cryptoListParam) async {
@@ -29,6 +32,7 @@ class CryptoListDatasourceImpl implements CryptoListDatasource {
     }
   }
 
+  // Implementation of the function to get trending crypto list
   @override
   Future<List<TrendingCryptoEntity>> getTrendingCryptoList() async {
     try {

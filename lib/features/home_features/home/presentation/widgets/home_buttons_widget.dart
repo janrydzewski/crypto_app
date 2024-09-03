@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
+// Widget to build the buttons
 class HomeButtonsWidget extends StatelessWidget {
   const HomeButtonsWidget({super.key});
 
@@ -29,6 +30,7 @@ class HomeButtonsWidget extends StatelessWidget {
   }
 }
 
+// Private widget to build the button
 class _ButtonWidget extends StatelessWidget {
   final ButtonEntity button;
   const _ButtonWidget({required this.button});

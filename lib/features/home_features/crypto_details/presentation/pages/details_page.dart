@@ -7,6 +7,7 @@ import 'package:crypto_app/features/home_features/crypto_details/presentation/bl
 import 'package:crypto_app/features/home_features/crypto_details/presentation/widgets/details_widget.dart';
 import 'package:crypto_app/features/home_features/crypto_details/presentation/widgets/timeline_chart_widget.dart';
 import 'package:crypto_app/features/home_features/home/presentation/bloc/user_balance/cubit/user_balance_cubit.dart';
+import 'package:crypto_app/shared/widgets/chart_info_dialog_widget.dart';
 import 'package:crypto_app/shared/widgets/crypto_scaffold_widget.dart';
 import 'package:crypto_app/shared/widgets/error_widget.dart';
 import 'package:crypto_app/shared/widgets/loading_widget.dart';
@@ -48,6 +49,12 @@ class _DetailsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return CryptoScaffold.title(
       title: cryptoId.toUpperCase(),
+      actions: [
+        IconButton(
+          onPressed: () => chartInfoDialogWidget(context),
+          icon: const Icon(Icons.info),
+        ),
+      ],
       body: Column(
         children: [
           _buildView(),
@@ -57,6 +64,7 @@ class _DetailsView extends StatelessWidget {
     );
   }
 
+  // Function to build the details view and skeleton
   _buildView() {
     return BlocBuilder<CryptoDetailsBloc, CryptoDetailsState>(
       builder: (context, state) {
@@ -80,6 +88,7 @@ class _DetailsView extends StatelessWidget {
     );
   }
 
+  // Function to build the chart of the details page
   _buildChart() {
     return BlocBuilder<ChartBloc, ChartState>(
       builder: (context, state) {

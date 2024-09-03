@@ -4,6 +4,7 @@ import 'package:crypto_app/features/home_features/crypto_details/domain/reposito
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 
+// Usecase to get crypto details
 @LazySingleton()
 class GetCryptoDetailsUsecase {
   final DetailsRepository detailsRepository;

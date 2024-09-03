@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 
+// Custom bottom navigation bar widget
 class CustomBottomNavigationBarWidget extends StatelessWidget {
   final StatefulNavigationShell navigationShell;
   const CustomBottomNavigationBarWidget(
@@ -48,6 +49,7 @@ class CustomBottomNavigationBarWidget extends StatelessWidget {
   }
 }
 
+// Private widget to build the bottom navigation bar element
 class _BottomNavigationBarElementWidget extends StatelessWidget {
   final int index;
   final Function(int index) func;

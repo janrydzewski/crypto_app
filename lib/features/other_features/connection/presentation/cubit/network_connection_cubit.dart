@@ -12,6 +12,7 @@ class NetworkConnectionCubit extends Cubit<NetworkConnectionState> {
   Connectivity connectivity = Connectivity();
   StreamSubscription? streamSubscription;
   NetworkConnectionCubit() : super(const _NetworkConnectionState()) {
+    // Listen to the connectivity changes
     streamSubscription = connectivity.onConnectivityChanged.listen((event) {
       log("Connection status: ${event.toString()}");
       if (event[0] == ConnectivityResult.wifi ||

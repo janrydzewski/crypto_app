@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
 
+// Widget to build the connection lost page
 Future<T?> connectionLostWidget<T>(BuildContext context) async =>
     await dialogBuilder(
         context,

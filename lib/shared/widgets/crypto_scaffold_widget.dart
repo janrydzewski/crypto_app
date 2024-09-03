@@ -8,57 +8,27 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
+// Global scaffold widget for the app
 class CryptoScaffold extends StatefulWidget {
   final Widget body;
   final String? _title;
-  final SliverAppBar? _appBar;
+  final List<Widget>? actions;
 
-  const CryptoScaffold.title({
-    super.key,
-    required String title,
-    required this.body,
-  })  : _appBar = null,
-        _title = title;
-  const CryptoScaffold.appbar({
-    super.key,
-    required appBar,
-    required this.body,
-  })  : _appBar = appBar,
-        _title = null;
+  const CryptoScaffold.title(
+      {super.key,
+      required String title,
+      required this.body,
+      this.actions = const []})
+      : _title = title;
 
   @override
   State<CryptoScaffold> createState() => _CryptoScaffoldState();
 }
 
 class _CryptoScaffoldState extends State<CryptoScaffold> {
-  bool isGrey = false;
-
   String? get title => widget._title;
 
-  SliverAppBar? get appBar => widget._appBar;
-
-  Widget buildAppbar(BuildContext context) {
-    if (title != null) {
-      return SliverAppBar.medium(
-        backgroundColor: Colors.grey,
-        flexibleSpace: FlexibleSpaceBar(
-          background: Container(
-            color: Colors.transparent,
-          ),
-          title: Text(
-            title!,
-            style: const TextStyle(
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
-      );
-    }
-    if (appBar != null) {
-      return appBar!;
-    }
-    return const SliverAppBar.medium();
-  }
+  List<Widget>? get actions => widget.actions;
 
   @override
   Widget build(BuildContext context) {
@@ -88,8 +58,11 @@ class _CryptoScaffoldState extends State<CryptoScaffold> {
                   builder: (BuildContext context, constraints) {
                     final scrolled = constraints.scrollOffset > 0;
                     return SliverAppBar.medium(
-                      backgroundColor:
-                          scrolled ? Colors.grey[100] : Colors.transparent,
+                      backgroundColor: scrolled
+                          ? context.isDark
+                              ? Colors.grey[800]
+                              : Colors.grey[100]
+                          : Colors.transparent,
                       title: Text(
                         title!,
                         style: const TextStyle(
@@ -112,7 +85,7 @@ class _CryptoScaffoldState extends State<CryptoScaffold> {
                                 icon: const Icon(Icons.settings),
                               ),
                             ]
-                          : [],
+                          : actions,
                     );
                   },
                 );
