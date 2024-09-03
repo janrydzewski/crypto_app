@@ -10,4 +10,7 @@ class IconsK extends Constants {
 
   static const arrowTrending = "$icons/arrow_trend_up.svg";
   static const arrowTrendingFilled = "$icons/arrow_trend_up_fill.svg";
+
+  static const receiveIcon = "$icons/receive_icon.svg";
+  static const sendIcon = "$icons/send_icon.svg";
 }

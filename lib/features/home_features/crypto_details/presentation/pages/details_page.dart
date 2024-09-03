@@ -6,6 +6,7 @@ import 'package:crypto_app/features/home_features/crypto_details/presentation/bl
 import 'package:crypto_app/features/home_features/crypto_details/presentation/bloc/interval/interval_bloc.dart';
 import 'package:crypto_app/features/home_features/crypto_details/presentation/widgets/details_widget.dart';
 import 'package:crypto_app/features/home_features/crypto_details/presentation/widgets/timeline_chart_widget.dart';
+import 'package:crypto_app/features/home_features/home/presentation/bloc/user_balance/cubit/user_balance_cubit.dart';
 import 'package:crypto_app/shared/widgets/crypto_scaffold_widget.dart';
 import 'package:crypto_app/shared/widgets/error_widget.dart';
 import 'package:crypto_app/shared/widgets/loading_widget.dart';
@@ -25,9 +26,9 @@ class DetailsPage extends StatelessWidget {
           create: (context) => IntervalBloc(),
         ),
         BlocProvider(
-          create: (context) =>
-              ChartBloc(cryptoId, locator(), context.read<IntervalBloc>())
-                ..add(ChartEvent.getChartData(cryptoId: cryptoId, days: 1)),
+          create: (context) => ChartBloc(cryptoId, locator(),
+              context.read<IntervalBloc>(), context.read<UserBalanceCubit>())
+            ..add(ChartEvent.getChartData(cryptoId: cryptoId, days: 1)),
         ),
         BlocProvider(
           create: (context) => CryptoDetailsBloc(locator())

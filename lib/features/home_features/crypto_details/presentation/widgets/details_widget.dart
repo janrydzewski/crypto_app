@@ -1,9 +1,12 @@
 import 'package:crypto_app/core/constants/margins.dart';
+import 'package:crypto_app/core/extenstions/currency_extenstion.dart';
 import 'package:crypto_app/core/extenstions/style_extenstion.dart';
 import 'package:crypto_app/features/home_features/crypto_details/domain/entities/crypto_details_entity.dart';
+import 'package:crypto_app/features/home_features/home/presentation/bloc/user_balance/cubit/user_balance_cubit.dart';
 import 'package:crypto_app/shared/custom_cached_network_image.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class DetailsWidget extends StatelessWidget {
   final CryptoDetailsEntity cryptoDetails;
@@ -25,7 +28,9 @@ class DetailsWidget extends StatelessWidget {
           height: 20,
         ),
         Text(
-          "\$${cryptoDetails.marketData.currentPrice['usd'].toStringAsFixed(2)}",
+          context.watch<UserBalanceCubit>().state.currency.format(cryptoDetails
+                  .marketData.currentPrice['usd'] /
+              context.watch<UserBalanceCubit>().state.currency.currencyRate),
           style: context.displaySmall,
         ),
         const SizedBox(

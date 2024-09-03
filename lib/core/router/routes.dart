@@ -3,7 +3,7 @@ import 'package:crypto_app/core/constants/constants.dart';
 class RoutesK extends Constants {
   //SECTION - [APP]
   static const home = "/";
-  static const list = "/list";
+  static const cryptoList = "/cryptoList";
   static const details = "details/:id";
   //!SECTION
 

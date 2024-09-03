@@ -1,7 +1,10 @@
+import 'package:crypto_app/core/extenstions/currency_extenstion.dart';
 import 'package:crypto_app/core/extenstions/style_extenstion.dart';
 import 'package:crypto_app/features/home_features/crypto_details/domain/entities/prices_entity.dart';
+import 'package:crypto_app/features/home_features/home/presentation/bloc/user_balance/cubit/user_balance_cubit.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ChartWidget extends StatelessWidget {
   final PricesEntity prices;
@@ -25,6 +28,7 @@ class ChartWidget extends StatelessWidget {
 
   LineChartData mainData(
       final List<List<double>> prices, BuildContext context, bool isLoaded) {
+    final currency = context.watch<UserBalanceCubit>().state.currency;
     return LineChartData(
       gridData: const FlGridData(show: false),
       titlesData: const FlTitlesData(show: false),
@@ -35,7 +39,7 @@ class ChartWidget extends StatelessWidget {
                 context.secondaryColor.withOpacity(0.3),
             getTooltipItems: (List<LineBarSpot> touchedSpots) {
               return touchedSpots.map((LineBarSpot touchedSpot) {
-                return LineTooltipItem(touchedSpot.y.toStringAsFixed(2),
+                return LineTooltipItem(currency.format(touchedSpot.y),
                     context.titleSmall!.copyWith(color: context.onSurface));
               }).toList();
             }),
@@ -44,7 +48,7 @@ class ChartWidget extends StatelessWidget {
       minX: 0,
       maxX: prices.length.toDouble() - 1,
       minY: getMinY.toDouble(),
-      maxY: isLoaded ? getMaxY.toDouble() : 10,
+      maxY: isLoaded ? getMaxY.toDouble() : 1,
       lineBarsData: [
         LineChartBarData(
           spots: prices.asMap().entries.map((entry) {
@@ -80,31 +84,31 @@ class ChartWidget extends StatelessWidget {
     );
   }
 
-  int get getMinX {
+  double get getMinX {
     return prices.prices
         .map((e) => e[0])
         .reduce((a, b) => a < b ? a : b)
-        .toInt();
+        .toDouble();
   }
 
-  int get getMaxX {
+  double get getMaxX {
     return prices.prices
         .map((e) => e[0])
         .reduce((a, b) => a > b ? a : b)
-        .toInt();
+        .toDouble();
   }
 
-  int get getMinY {
+  double get getMinY {
     return prices.prices
         .map((e) => e[1])
         .reduce((a, b) => a < b ? a : b)
-        .toInt();
+        .toDouble();
   }
 
-  int get getMaxY {
+  double get getMaxY {
     return prices.prices
         .map((e) => e[1])
         .reduce((a, b) => a > b ? a : b)
-        .toInt();
+        .toDouble();
   }
 }

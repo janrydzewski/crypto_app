@@ -1,12 +1,16 @@
 import 'package:crypto_app/core/constants/api_routes.dart';
 import 'package:crypto_app/core/network/dio_factory.dart';
+import 'package:crypto_app/features/home_features/crypto_details/domain/entities/chart_data_entity.dart';
 import 'package:crypto_app/features/home_features/crypto_details/domain/entities/crypto_details_entity.dart';
 import 'package:crypto_app/features/home_features/crypto_details/domain/entities/prices_entity.dart';
 import 'package:injectable/injectable.dart';
 
 abstract class DetailsDatasource {
   Future<CryptoDetailsEntity> getCryptoDetails(String cryptoId);
-  Future<PricesEntity> getCryptoChartData(String cryptoId, int days);
+  Future<PricesEntity> getCryptoChartData(
+    String cryptoId,
+    ChartDataEntity chartDataEntity,
+  );
 }
 
 @LazySingleton(as: DetailsDatasource)
@@ -27,14 +31,12 @@ class DetailsDatasourceImpl implements DetailsDatasource {
   }
 
   @override
-  Future<PricesEntity> getCryptoChartData(String cryptoId, int days) async {
+  Future<PricesEntity> getCryptoChartData(
+      String cryptoId, ChartDataEntity chartDataEntity) async {
     try {
       final response = await dioFactory.get(
           "${ApiRoutesK.cryptoDetails}/$cryptoId/market_chart",
-          queryParameters: {
-            'vs_currency': 'usd',
-            'days': days,
-          });
+          queryParameters: chartDataEntity.toJson());
       return PricesEntity.fromJson(response);
     } catch (e, st) {
       throw dioFactory.defaultException(e, st);

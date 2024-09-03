@@ -27,9 +27,7 @@ class _RootView extends StatelessWidget {
     return BlocListener<NetworkConnectionCubit, NetworkConnectionState>(
       listener: (context, state) async {
         if (state.connectionStatus == ConnectionStatus.disconnected) {
-          // await showDialog(
-          //     context: context,
-          //     builder: (context) => const ConnectionLostView());
+          // connectionLostWidget(context);
         }
       },
       child: Scaffold(
@@ -40,12 +38,10 @@ class _RootView extends StatelessWidget {
             navigationShell,
             connectionStatus == ConnectionStatus.disconnected
                 ? Positioned(
-                    top: 50,
+                    top: 70,
                     left: 20,
                     child: GestureDetector(
-                      onTap: () async => await showDialog(
-                          context: context,
-                          builder: (context) => const ConnectionLostView()),
+                      onTap: () async => connectionLostWidget(context),
                       child: CircleAvatar(
                         backgroundColor: context.errorContainer,
                         child: Icon(

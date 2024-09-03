@@ -12,7 +12,14 @@ extension GoRouterExtension on GoRouter {
   }
 
   bool get addScrollController {
-    if (location() == RoutesK.list) {
+    if (location() == RoutesK.cryptoList) {
+      return true;
+    }
+    return false;
+  }
+
+  bool get displayCurrencyChange {
+    if (location() == RoutesK.home || location() == RoutesK.cryptoList) {
       return true;
     }
     return false;
