@@ -22,7 +22,7 @@ class ChartBloc extends Bloc<ChartEvent, ChartState> {
   final UserBalanceCubit _userBalanceCubit;
 
   late StreamSubscription _intervalSubscription;
-  late StreamSubscription _userBalanceSubscription;
+  StreamSubscription? _userBalanceSubscription;
   ChartBloc(this.cryptoId, this._getCryptoPricesUsecase, this._intervalBloc,
       this._userBalanceCubit)
       : super(const _Initial()) {
@@ -62,6 +62,7 @@ class ChartBloc extends Bloc<ChartEvent, ChartState> {
   @override
   Future<void> close() {
     _intervalSubscription.cancel();
+    _userBalanceSubscription?.cancel();
     return super.close();
   }
 }

@@ -1,5 +1,6 @@
 import 'package:crypto_app/core/addons/global.dart';
 import 'package:crypto_app/core/constants/margins.dart';
+import 'package:crypto_app/core/extenstions/currency_extenstion.dart';
 import 'package:crypto_app/core/extenstions/style_extenstion.dart';
 import 'package:crypto_app/core/router/routes.dart';
 import 'package:crypto_app/core/theme/styles/box_styles.dart';
@@ -44,7 +45,11 @@ class _CryptoListViewWidgetState extends State<CryptoListViewWidget> {
           physics: const NeverScrollableScrollPhysics(),
           itemBuilder: (context, index) {
             return index >= widget.cryptoList.length - 1
-                ? const _LoadingWidget()
+                ? widget.cryptoList.length < 200
+                    ? const _LoadingWidget()
+                    : const SizedBox(
+                        height: 100,
+                      )
                 : _ListViewElementWidget(crypto: widget.cryptoList[index]);
           },
           itemCount: widget.cryptoList.length),
@@ -106,7 +111,11 @@ class _ListViewElementWidget extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Text(
-                        "${context.watch<UserBalanceCubit>().state.currency.symbol}${crypto.currentPrice.toStringAsFixed(2)}",
+                        context
+                            .watch<UserBalanceCubit>()
+                            .state
+                            .currency
+                            .format(crypto.currentPrice),
                         style: context.titleLarge),
                     Text(
                       "${crypto.priceChangePercentage.toStringAsFixed(2)}%",
@@ -129,10 +138,10 @@ class _LoadingWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: MarginsK.v10,
+      padding: MarginsK.top20b80,
       child: Center(
           child: LoadingAnimationWidget.threeArchedCircle(
-              color: context.primaryColor, size: 30)),
+              color: context.primaryColor, size: 40)),
     );
   }
 }

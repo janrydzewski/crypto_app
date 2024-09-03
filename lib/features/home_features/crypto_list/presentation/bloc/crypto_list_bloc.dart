@@ -30,14 +30,17 @@ class CryptoListBloc extends Bloc<CryptoListEvent, CryptoListState> {
     if (event.isForced) {
       emit(const _Initial());
     }
-    final result = await _getCryptoListUsecase.call(CryptoListParamEntity(
-        pageKey: event.pageKey,
-        currencyCode: _userBalanceCubit.state.currency.code.toLowerCase()));
-    result.fold((l) => emit(_Failure(l)), (r) {
-      final currentList =
-          state.maybeWhen(orElse: () => <CryptoEntity>[], data: (list) => list);
-      emit(_Data(currentList + r));
-    });
+    final list = state.maybeWhen(orElse: () => [], data: (list) => list);
+    if (list.length < 200) {
+      final result = await _getCryptoListUsecase.call(CryptoListParamEntity(
+          pageKey: event.pageKey,
+          currencyCode: _userBalanceCubit.state.currency.code.toLowerCase()));
+      result.fold((l) => emit(_Failure(l)), (r) {
+        final currentList = state.maybeWhen(
+            orElse: () => <CryptoEntity>[], data: (list) => list);
+        emit(_Data(currentList + r));
+      });
+    }
   }
 
   @override

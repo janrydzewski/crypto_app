@@ -118,15 +118,10 @@ class _CryptoScaffoldState extends State<CryptoScaffold> {
                 );
               },
             ),
-            // buildAppbar(context),
             SliverToBoxAdapter(
-              child: Stack(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 20),
-                    child: widget.body,
-                  ),
-                ],
+              child: Padding(
+                padding: const EdgeInsets.only(bottom: 20),
+                child: widget.body,
               ),
             ),
           ],
