@@ -6,13 +6,15 @@ import 'package:lottie/lottie.dart';
 
 // Widget to build the error widget
 class CustomErrorWidget extends StatelessWidget {
+  final int offset;
   final Failure failure;
-  const CustomErrorWidget({super.key, required this.failure});
+  const CustomErrorWidget(
+      {super.key, required this.failure, this.offset = 350});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height - 500,
+      height: MediaQuery.of(context).size.height - offset,
       alignment: Alignment.center,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,

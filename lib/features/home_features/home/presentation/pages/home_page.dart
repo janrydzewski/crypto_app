@@ -73,7 +73,10 @@ class _HomeView extends StatelessWidget {
           return state.maybeWhen(
             data: (data) =>
                 TrendingCryptoListViewWidget(trendingCryptoList: data),
-            failure: (failure) => CustomErrorWidget(failure: failure),
+            failure: (failure) => CustomErrorWidget(
+              failure: failure,
+              offset: 500,
+            ),
             orElse: () => Skeletonizer(
                 child: TrendingCryptoListViewWidget(
                     trendingCryptoList: List.generate(
