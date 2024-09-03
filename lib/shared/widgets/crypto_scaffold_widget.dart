@@ -88,8 +88,11 @@ class _CryptoScaffoldState extends State<CryptoScaffold> {
                   builder: (BuildContext context, constraints) {
                     final scrolled = constraints.scrollOffset > 0;
                     return SliverAppBar.medium(
-                      backgroundColor:
-                          scrolled ? Colors.grey[100] : Colors.transparent,
+                      backgroundColor: scrolled
+                          ? context.isDark
+                              ? Colors.grey[800]
+                              : Colors.grey[100]
+                          : Colors.transparent,
                       title: Text(
                         title!,
                         style: const TextStyle(

@@ -75,7 +75,7 @@ class _HomeView extends StatelessWidget {
             orElse: () => Skeletonizer(
                 child: TrendingCryptoListViewWidget(
                     trendingCryptoList: List.generate(
-                        4, (index) => TrendingCryptoEntity.example()))),
+                        8, (index) => TrendingCryptoEntity.example()))),
           );
         },
       );

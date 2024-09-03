@@ -8,7 +8,7 @@ class LoadingWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height - 350,
+      height: MediaQuery.of(context).size.height - 300,
       alignment: Alignment.center,
       child: LottieBuilder.asset(
         AnimationsK.lottieLoading,
