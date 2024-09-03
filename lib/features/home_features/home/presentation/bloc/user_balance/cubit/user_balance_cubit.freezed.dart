@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$UserBalanceState {
   double get userBalance => throw _privateConstructorUsedError;
+  CurrencyEntity get currency => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $UserBalanceStateCopyWith<UserBalanceState> get copyWith =>
@@ -29,7 +30,9 @@ abstract class $UserBalanceStateCopyWith<$Res> {
           UserBalanceState value, $Res Function(UserBalanceState) then) =
       _$UserBalanceStateCopyWithImpl<$Res, UserBalanceState>;
   @useResult
-  $Res call({double userBalance});
+  $Res call({double userBalance, CurrencyEntity currency});
+
+  $CurrencyEntityCopyWith<$Res> get currency;
 }
 
 /// @nodoc
@@ -46,13 +49,26 @@ class _$UserBalanceStateCopyWithImpl<$Res, $Val extends UserBalanceState>
   @override
   $Res call({
     Object? userBalance = null,
+    Object? currency = null,
   }) {
     return _then(_value.copyWith(
       userBalance: null == userBalance
           ? _value.userBalance
           : userBalance // ignore: cast_nullable_to_non_nullable
               as double,
+      currency: null == currency
+          ? _value.currency
+          : currency // ignore: cast_nullable_to_non_nullable
+              as CurrencyEntity,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $CurrencyEntityCopyWith<$Res> get currency {
+    return $CurrencyEntityCopyWith<$Res>(_value.currency, (value) {
+      return _then(_value.copyWith(currency: value) as $Val);
+    });
   }
 }
 
@@ -64,7 +80,10 @@ abstract class _$$UserBalanceStateImplCopyWith<$Res>
       __$$UserBalanceStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({double userBalance});
+  $Res call({double userBalance, CurrencyEntity currency});
+
+  @override
+  $CurrencyEntityCopyWith<$Res> get currency;
 }
 
 /// @nodoc
@@ -79,12 +98,17 @@ class __$$UserBalanceStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? userBalance = null,
+    Object? currency = null,
   }) {
     return _then(_$UserBalanceStateImpl(
       userBalance: null == userBalance
           ? _value.userBalance
           : userBalance // ignore: cast_nullable_to_non_nullable
               as double,
+      currency: null == currency
+          ? _value.currency
+          : currency // ignore: cast_nullable_to_non_nullable
+              as CurrencyEntity,
     ));
   }
 }
@@ -92,14 +116,18 @@ class __$$UserBalanceStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$UserBalanceStateImpl extends _UserBalanceState {
-  const _$UserBalanceStateImpl({required this.userBalance}) : super._();
+  const _$UserBalanceStateImpl(
+      {required this.userBalance, required this.currency})
+      : super._();
 
   @override
   final double userBalance;
+  @override
+  final CurrencyEntity currency;
 
   @override
   String toString() {
-    return 'UserBalanceState(userBalance: $userBalance)';
+    return 'UserBalanceState(userBalance: $userBalance, currency: $currency)';
   }
 
   @override
@@ -108,11 +136,13 @@ class _$UserBalanceStateImpl extends _UserBalanceState {
         (other.runtimeType == runtimeType &&
             other is _$UserBalanceStateImpl &&
             (identical(other.userBalance, userBalance) ||
-                other.userBalance == userBalance));
+                other.userBalance == userBalance) &&
+            (identical(other.currency, currency) ||
+                other.currency == currency));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, userBalance);
+  int get hashCode => Object.hash(runtimeType, userBalance, currency);
 
   @JsonKey(ignore: true)
   @override
@@ -123,12 +153,15 @@ class _$UserBalanceStateImpl extends _UserBalanceState {
 }
 
 abstract class _UserBalanceState extends UserBalanceState {
-  const factory _UserBalanceState({required final double userBalance}) =
-      _$UserBalanceStateImpl;
+  const factory _UserBalanceState(
+      {required final double userBalance,
+      required final CurrencyEntity currency}) = _$UserBalanceStateImpl;
   const _UserBalanceState._() : super._();
 
   @override
   double get userBalance;
+  @override
+  CurrencyEntity get currency;
   @override
   @JsonKey(ignore: true)
   _$$UserBalanceStateImplCopyWith<_$UserBalanceStateImpl> get copyWith =>

@@ -1,3 +1,4 @@
+import 'package:crypto_app/features/other_features/currency/domain/entities/currency_entity.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 
@@ -5,7 +6,9 @@ part 'user_balance_state.dart';
 part 'user_balance_cubit.freezed.dart';
 
 class UserBalanceCubit extends HydratedCubit<UserBalanceState> {
-  UserBalanceCubit() : super(const UserBalanceState(userBalance: 1000));
+  UserBalanceCubit()
+      : super(UserBalanceState(
+            userBalance: 1000, currency: CurrencyEntity.usd()));
 
   void increaseBalance() {
     emit(state.copyWith(userBalance: state.userBalance + 100));
@@ -17,6 +20,10 @@ class UserBalanceCubit extends HydratedCubit<UserBalanceState> {
     } else {
       emit(state.copyWith(userBalance: state.userBalance - 100));
     }
+  }
+
+  void changeCurrency(CurrencyEntity currency) {
+    emit(state.copyWith(currency: currency));
   }
 
   @override

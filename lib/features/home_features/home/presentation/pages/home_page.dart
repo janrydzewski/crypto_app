@@ -25,9 +25,6 @@ class HomePage extends StatelessWidget {
           create: (context) => TrendingCryptoListBloc(locator())
             ..add(const TrendingCryptoListEvent.getTrendingCryptoList()),
         ),
-        BlocProvider(
-          create: (context) => UserBalanceCubit(),
-        ),
       ],
       child: const _HomeView(),
     );
