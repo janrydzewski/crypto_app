@@ -31,12 +31,6 @@ class CryptoDetailsEntity with _$CryptoDetailsEntity {
         marketData: MarketDataEntity(
           priceChange24h: 5.5,
           priceChangePercentage24h: 0,
-          priceChangePercentage7d: 0,
-          priceChangePercentage14d: 0,
-          priceChangePercentage30d: 0,
-          priceChangePercentage60d: 0,
-          priceChangePercentage200d: 0,
-          priceChangePercentage1y: 0,
           currentPrice: {'usd': 5000},
         ),
       );

@@ -46,6 +46,7 @@ class MyApp extends StatelessWidget {
       title: 'Crypto App',
       theme: const MaterialTheme().light(),
       darkTheme: const MaterialTheme().dark(),
+      debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.system,
       routerConfig: router,
     );

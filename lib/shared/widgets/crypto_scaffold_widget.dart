@@ -12,54 +12,23 @@ import 'package:go_router/go_router.dart';
 class CryptoScaffold extends StatefulWidget {
   final Widget body;
   final String? _title;
-  final SliverAppBar? _appBar;
+  final List<Widget>? actions;
 
-  const CryptoScaffold.title({
-    super.key,
-    required String title,
-    required this.body,
-  })  : _appBar = null,
-        _title = title;
-  const CryptoScaffold.appbar({
-    super.key,
-    required appBar,
-    required this.body,
-  })  : _appBar = appBar,
-        _title = null;
+  const CryptoScaffold.title(
+      {super.key,
+      required String title,
+      required this.body,
+      this.actions = const []})
+      : _title = title;
 
   @override
   State<CryptoScaffold> createState() => _CryptoScaffoldState();
 }
 
 class _CryptoScaffoldState extends State<CryptoScaffold> {
-  bool isGrey = false;
-
   String? get title => widget._title;
 
-  SliverAppBar? get appBar => widget._appBar;
-
-  Widget buildAppbar(BuildContext context) {
-    if (title != null) {
-      return SliverAppBar.medium(
-        backgroundColor: Colors.grey,
-        flexibleSpace: FlexibleSpaceBar(
-          background: Container(
-            color: Colors.transparent,
-          ),
-          title: Text(
-            title!,
-            style: const TextStyle(
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
-      );
-    }
-    if (appBar != null) {
-      return appBar!;
-    }
-    return const SliverAppBar.medium();
-  }
+  List<Widget>? get actions => widget.actions;
 
   @override
   Widget build(BuildContext context) {
@@ -116,7 +85,7 @@ class _CryptoScaffoldState extends State<CryptoScaffold> {
                                 icon: const Icon(Icons.settings),
                               ),
                             ]
-                          : [],
+                          : actions,
                     );
                   },
                 );
