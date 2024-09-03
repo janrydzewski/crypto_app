@@ -11,6 +11,7 @@ _$CurrencyEntityImpl _$$CurrencyEntityImplFromJson(Map<String, dynamic> json) =>
       code: json['code'] as String,
       symbol: json['symbol'] as String,
       currencyRate: (json['currencyRate'] as num).toDouble(),
+      isSymbolOnRight: json['isSymbolOnRight'] as bool,
     );
 
 Map<String, dynamic> _$$CurrencyEntityImplToJson(
@@ -19,4 +20,5 @@ Map<String, dynamic> _$$CurrencyEntityImplToJson(
       'code': instance.code,
       'symbol': instance.symbol,
       'currencyRate': instance.currencyRate,
+      'isSymbolOnRight': instance.isSymbolOnRight,
     };

@@ -8,13 +8,16 @@ part 'trending_crypto_list_event.dart';
 part 'trending_crypto_list_state.dart';
 part 'trending_crypto_list_bloc.freezed.dart';
 
-class TrendingCryptoListBloc extends Bloc<TrendingCryptoListEvent, TrendingCryptoListState> {
+class TrendingCryptoListBloc
+    extends Bloc<TrendingCryptoListEvent, TrendingCryptoListState> {
   final GetTrendingCryptoListUsecase _getTrendingCryptoListUsecase;
-  TrendingCryptoListBloc(this._getTrendingCryptoListUsecase) : super(const _Initial()) {
+  TrendingCryptoListBloc(this._getTrendingCryptoListUsecase)
+      : super(const _Initial()) {
     on<_GetTrendingCryptoList>(_onGetTrendingCryptoList);
   }
 
-  _onGetTrendingCryptoList(_GetTrendingCryptoList event, Emitter<TrendingCryptoListState> emit) async {
+  _onGetTrendingCryptoList(_GetTrendingCryptoList event,
+      Emitter<TrendingCryptoListState> emit) async {
     final result = await _getTrendingCryptoListUsecase.call();
     result.fold((l) => emit(_Failure(l)), (r) => emit(_Data(r)));
   }

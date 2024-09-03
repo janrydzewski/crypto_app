@@ -1,10 +1,12 @@
 import 'package:crypto_app/features/other_features/currency/domain/entities/currency_entity.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
+import 'package:injectable/injectable.dart';
 
 part 'user_balance_state.dart';
 part 'user_balance_cubit.freezed.dart';
 
+@Singleton()
 class UserBalanceCubit extends HydratedCubit<UserBalanceState> {
   UserBalanceCubit()
       : super(UserBalanceState(

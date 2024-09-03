@@ -5,6 +5,7 @@ import 'package:crypto_app/core/router/routes.dart';
 import 'package:crypto_app/core/theme/styles/box_styles.dart';
 import 'package:crypto_app/features/home_features/crypto_list/domain/entities/crypto_entity.dart';
 import 'package:crypto_app/features/home_features/crypto_list/presentation/bloc/crypto_list_bloc.dart';
+import 'package:crypto_app/features/home_features/home/presentation/bloc/user_balance/cubit/user_balance_cubit.dart';
 import 'package:crypto_app/shared/custom_cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -73,8 +74,8 @@ class _ListViewElementWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => context.push(
-          "${RoutesK.cryptoList}/${RoutesK.details}".replaceAll(':id', crypto.id)),
+      onTap: () => context.push("${RoutesK.cryptoList}/${RoutesK.details}"
+          .replaceAll(':id', crypto.id)),
       child: Padding(
         padding: MarginsK.h10v4,
         child: Container(
@@ -104,7 +105,8 @@ class _ListViewElementWidget extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    Text("${crypto.currentPrice.toStringAsFixed(2)}\$",
+                    Text(
+                        "${context.watch<UserBalanceCubit>().state.currency.symbol}${crypto.currentPrice.toStringAsFixed(2)}",
                         style: context.titleLarge),
                     Text(
                       "${crypto.priceChangePercentage.toStringAsFixed(2)}%",

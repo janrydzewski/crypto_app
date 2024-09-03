@@ -1,11 +1,13 @@
 import 'package:crypto_app/core/constants/api_routes.dart';
 import 'package:crypto_app/core/network/dio_factory.dart';
 import 'package:crypto_app/features/home_features/crypto_list/domain/entities/crypto_entity.dart';
+import 'package:crypto_app/features/home_features/crypto_list/domain/entities/crypto_list_param_entity.dart';
 import 'package:crypto_app/features/home_features/crypto_list/domain/entities/trending_crypto_entity.dart';
 import 'package:injectable/injectable.dart';
 
 abstract class CryptoListDatasource {
-  Future<List<CryptoEntity>> getCryptoList(int pageKey, int pageSize);
+  Future<List<CryptoEntity>> getCryptoList(
+      CryptoListParamEntity cryptoListParam);
   Future<List<TrendingCryptoEntity>> getTrendingCryptoList();
 }
 
@@ -16,14 +18,11 @@ class CryptoListDatasourceImpl implements CryptoListDatasource {
   CryptoListDatasourceImpl({required this.dioFactory});
 
   @override
-  Future<List<CryptoEntity>> getCryptoList(int pageKey, int pageSize) async {
+  Future<List<CryptoEntity>> getCryptoList(
+      CryptoListParamEntity cryptoListParam) async {
     try {
-      final response =
-          await dioFactory.getList(ApiRoutesK.cryptoList, queryParameters: {
-        'vs_currency': 'usd',
-        'page': pageKey,
-        'per_page': pageSize,
-      });
+      final response = await dioFactory.getList(ApiRoutesK.cryptoList,
+          queryParameters: cryptoListParam.toJson());
       return (response).map((e) => CryptoEntity.fromJson(e)).toList();
     } catch (e, st) {
       throw dioFactory.defaultException(e, st);

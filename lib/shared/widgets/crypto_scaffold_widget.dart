@@ -96,21 +96,23 @@ class _CryptoScaffoldState extends State<CryptoScaffold> {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      actions: [
-                        IconButton(
-                          onPressed: () {
-                            currencyPickerWidget(
-                                context,
-                                [
-                                  CurrencyEntity.usd(),
-                                  CurrencyEntity.euro(),
-                                  CurrencyEntity.pln()
-                                ],
-                                state.currency.code);
-                          },
-                          icon: const Icon(Icons.settings),
-                        ),
-                      ],
+                      actions: GoRouter.of(context).displayCurrencyChange
+                          ? [
+                              IconButton(
+                                onPressed: () {
+                                  currencyPickerWidget(
+                                      context,
+                                      [
+                                        CurrencyEntity.usd(),
+                                        CurrencyEntity.euro(),
+                                        CurrencyEntity.pln()
+                                      ],
+                                      state.currency.code);
+                                },
+                                icon: const Icon(Icons.settings),
+                              ),
+                            ]
+                          : [],
                     );
                   },
                 );

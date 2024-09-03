@@ -4,9 +4,11 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:crypto_app/core/network/error/failures.dart';
+import 'package:crypto_app/features/home_features/crypto_details/domain/entities/chart_data_entity.dart';
 import 'package:crypto_app/features/home_features/crypto_details/domain/entities/prices_entity.dart';
 import 'package:crypto_app/features/home_features/crypto_details/domain/usecases/get_crypto_prices_usecase.dart';
 import 'package:crypto_app/features/home_features/crypto_details/presentation/bloc/interval/interval_bloc.dart';
+import 'package:crypto_app/features/home_features/home/presentation/bloc/user_balance/cubit/user_balance_cubit.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'chart_event.dart';
@@ -17,9 +19,12 @@ class ChartBloc extends Bloc<ChartEvent, ChartState> {
   final String cryptoId;
   final GetCryptoPricesUsecase _getCryptoPricesUsecase;
   final IntervalBloc _intervalBloc;
+  final UserBalanceCubit _userBalanceCubit;
 
   late StreamSubscription _intervalSubscription;
-  ChartBloc(this.cryptoId, this._getCryptoPricesUsecase, this._intervalBloc)
+  late StreamSubscription _userBalanceSubscription;
+  ChartBloc(this.cryptoId, this._getCryptoPricesUsecase, this._intervalBloc,
+      this._userBalanceCubit)
       : super(const _Initial()) {
     on<_GetChartData>(_onGetChartData);
 
@@ -27,6 +32,11 @@ class ChartBloc extends Bloc<ChartEvent, ChartState> {
       state.when(
           data: (interval) =>
               add(_GetChartData(cryptoId: cryptoId, days: interval.days)));
+
+      _userBalanceSubscription = _userBalanceCubit.stream.listen((state) {
+        add(_GetChartData(
+            cryptoId: cryptoId, days: _intervalBloc.state.interval.days));
+      });
     });
   }
 
@@ -34,7 +44,11 @@ class ChartBloc extends Bloc<ChartEvent, ChartState> {
     emit(const _Loading());
 
     final pricesResult = await _getCryptoPricesUsecase.call(
-        cryptoId: event.cryptoId, days: event.days);
+      ChartDataEntity(
+          days: event.days,
+          currencyCode: _userBalanceCubit.state.currency.code.toLowerCase()),
+      cryptoId: event.cryptoId,
+    );
     pricesResult.fold((l) => emit(_Failure(l)), (r) {
       PricesEntity list = PricesEntity(
           prices: List.generate(24, (index) {

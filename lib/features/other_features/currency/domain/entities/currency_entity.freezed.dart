@@ -23,6 +23,7 @@ mixin _$CurrencyEntity {
   String get code => throw _privateConstructorUsedError;
   String get symbol => throw _privateConstructorUsedError;
   double get currencyRate => throw _privateConstructorUsedError;
+  bool get isSymbolOnRight => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,7 +37,8 @@ abstract class $CurrencyEntityCopyWith<$Res> {
           CurrencyEntity value, $Res Function(CurrencyEntity) then) =
       _$CurrencyEntityCopyWithImpl<$Res, CurrencyEntity>;
   @useResult
-  $Res call({String code, String symbol, double currencyRate});
+  $Res call(
+      {String code, String symbol, double currencyRate, bool isSymbolOnRight});
 }
 
 /// @nodoc
@@ -55,6 +57,7 @@ class _$CurrencyEntityCopyWithImpl<$Res, $Val extends CurrencyEntity>
     Object? code = null,
     Object? symbol = null,
     Object? currencyRate = null,
+    Object? isSymbolOnRight = null,
   }) {
     return _then(_value.copyWith(
       code: null == code
@@ -69,6 +72,10 @@ class _$CurrencyEntityCopyWithImpl<$Res, $Val extends CurrencyEntity>
           ? _value.currencyRate
           : currencyRate // ignore: cast_nullable_to_non_nullable
               as double,
+      isSymbolOnRight: null == isSymbolOnRight
+          ? _value.isSymbolOnRight
+          : isSymbolOnRight // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -81,7 +88,8 @@ abstract class _$$CurrencyEntityImplCopyWith<$Res>
       __$$CurrencyEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String code, String symbol, double currencyRate});
+  $Res call(
+      {String code, String symbol, double currencyRate, bool isSymbolOnRight});
 }
 
 /// @nodoc
@@ -98,6 +106,7 @@ class __$$CurrencyEntityImplCopyWithImpl<$Res>
     Object? code = null,
     Object? symbol = null,
     Object? currencyRate = null,
+    Object? isSymbolOnRight = null,
   }) {
     return _then(_$CurrencyEntityImpl(
       code: null == code
@@ -112,6 +121,10 @@ class __$$CurrencyEntityImplCopyWithImpl<$Res>
           ? _value.currencyRate
           : currencyRate // ignore: cast_nullable_to_non_nullable
               as double,
+      isSymbolOnRight: null == isSymbolOnRight
+          ? _value.isSymbolOnRight
+          : isSymbolOnRight // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -120,7 +133,10 @@ class __$$CurrencyEntityImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$CurrencyEntityImpl implements _CurrencyEntity {
   _$CurrencyEntityImpl(
-      {required this.code, required this.symbol, required this.currencyRate});
+      {required this.code,
+      required this.symbol,
+      required this.currencyRate,
+      required this.isSymbolOnRight});
 
   factory _$CurrencyEntityImpl.fromJson(Map<String, dynamic> json) =>
       _$$CurrencyEntityImplFromJson(json);
@@ -131,10 +147,12 @@ class _$CurrencyEntityImpl implements _CurrencyEntity {
   final String symbol;
   @override
   final double currencyRate;
+  @override
+  final bool isSymbolOnRight;
 
   @override
   String toString() {
-    return 'CurrencyEntity(code: $code, symbol: $symbol, currencyRate: $currencyRate)';
+    return 'CurrencyEntity(code: $code, symbol: $symbol, currencyRate: $currencyRate, isSymbolOnRight: $isSymbolOnRight)';
   }
 
   @override
@@ -145,12 +163,15 @@ class _$CurrencyEntityImpl implements _CurrencyEntity {
             (identical(other.code, code) || other.code == code) &&
             (identical(other.symbol, symbol) || other.symbol == symbol) &&
             (identical(other.currencyRate, currencyRate) ||
-                other.currencyRate == currencyRate));
+                other.currencyRate == currencyRate) &&
+            (identical(other.isSymbolOnRight, isSymbolOnRight) ||
+                other.isSymbolOnRight == isSymbolOnRight));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, code, symbol, currencyRate);
+  int get hashCode =>
+      Object.hash(runtimeType, code, symbol, currencyRate, isSymbolOnRight);
 
   @JsonKey(ignore: true)
   @override
@@ -171,7 +192,8 @@ abstract class _CurrencyEntity implements CurrencyEntity {
   factory _CurrencyEntity(
       {required final String code,
       required final String symbol,
-      required final double currencyRate}) = _$CurrencyEntityImpl;
+      required final double currencyRate,
+      required final bool isSymbolOnRight}) = _$CurrencyEntityImpl;
 
   factory _CurrencyEntity.fromJson(Map<String, dynamic> json) =
       _$CurrencyEntityImpl.fromJson;
@@ -182,6 +204,8 @@ abstract class _CurrencyEntity implements CurrencyEntity {
   String get symbol;
   @override
   double get currencyRate;
+  @override
+  bool get isSymbolOnRight;
   @override
   @JsonKey(ignore: true)
   _$$CurrencyEntityImplCopyWith<_$CurrencyEntityImpl> get copyWith =>

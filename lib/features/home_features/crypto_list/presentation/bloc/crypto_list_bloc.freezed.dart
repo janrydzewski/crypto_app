@@ -17,19 +17,20 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$CryptoListEvent {
   int get pageKey => throw _privateConstructorUsedError;
+  bool get isForced => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int pageKey) getCryptoList,
+    required TResult Function(int pageKey, bool isForced) getCryptoList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int pageKey)? getCryptoList,
+    TResult? Function(int pageKey, bool isForced)? getCryptoList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int pageKey)? getCryptoList,
+    TResult Function(int pageKey, bool isForced)? getCryptoList,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -61,7 +62,7 @@ abstract class $CryptoListEventCopyWith<$Res> {
           CryptoListEvent value, $Res Function(CryptoListEvent) then) =
       _$CryptoListEventCopyWithImpl<$Res, CryptoListEvent>;
   @useResult
-  $Res call({int pageKey});
+  $Res call({int pageKey, bool isForced});
 }
 
 /// @nodoc
@@ -78,12 +79,17 @@ class _$CryptoListEventCopyWithImpl<$Res, $Val extends CryptoListEvent>
   @override
   $Res call({
     Object? pageKey = null,
+    Object? isForced = null,
   }) {
     return _then(_value.copyWith(
       pageKey: null == pageKey
           ? _value.pageKey
           : pageKey // ignore: cast_nullable_to_non_nullable
               as int,
+      isForced: null == isForced
+          ? _value.isForced
+          : isForced // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -96,7 +102,7 @@ abstract class _$$GetCryptoListImplCopyWith<$Res>
       __$$GetCryptoListImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int pageKey});
+  $Res call({int pageKey, bool isForced});
 }
 
 /// @nodoc
@@ -111,12 +117,17 @@ class __$$GetCryptoListImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? pageKey = null,
+    Object? isForced = null,
   }) {
     return _then(_$GetCryptoListImpl(
       pageKey: null == pageKey
           ? _value.pageKey
           : pageKey // ignore: cast_nullable_to_non_nullable
               as int,
+      isForced: null == isForced
+          ? _value.isForced
+          : isForced // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -124,14 +135,17 @@ class __$$GetCryptoListImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$GetCryptoListImpl implements _GetCryptoList {
-  const _$GetCryptoListImpl({required this.pageKey});
+  const _$GetCryptoListImpl({required this.pageKey, this.isForced = false});
 
   @override
   final int pageKey;
+  @override
+  @JsonKey()
+  final bool isForced;
 
   @override
   String toString() {
-    return 'CryptoListEvent.getCryptoList(pageKey: $pageKey)';
+    return 'CryptoListEvent.getCryptoList(pageKey: $pageKey, isForced: $isForced)';
   }
 
   @override
@@ -139,11 +153,13 @@ class _$GetCryptoListImpl implements _GetCryptoList {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetCryptoListImpl &&
-            (identical(other.pageKey, pageKey) || other.pageKey == pageKey));
+            (identical(other.pageKey, pageKey) || other.pageKey == pageKey) &&
+            (identical(other.isForced, isForced) ||
+                other.isForced == isForced));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, pageKey);
+  int get hashCode => Object.hash(runtimeType, pageKey, isForced);
 
   @JsonKey(ignore: true)
   @override
@@ -154,27 +170,27 @@ class _$GetCryptoListImpl implements _GetCryptoList {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int pageKey) getCryptoList,
+    required TResult Function(int pageKey, bool isForced) getCryptoList,
   }) {
-    return getCryptoList(pageKey);
+    return getCryptoList(pageKey, isForced);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int pageKey)? getCryptoList,
+    TResult? Function(int pageKey, bool isForced)? getCryptoList,
   }) {
-    return getCryptoList?.call(pageKey);
+    return getCryptoList?.call(pageKey, isForced);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int pageKey)? getCryptoList,
+    TResult Function(int pageKey, bool isForced)? getCryptoList,
     required TResult orElse(),
   }) {
     if (getCryptoList != null) {
-      return getCryptoList(pageKey);
+      return getCryptoList(pageKey, isForced);
     }
     return orElse();
   }
@@ -209,11 +225,13 @@ class _$GetCryptoListImpl implements _GetCryptoList {
 }
 
 abstract class _GetCryptoList implements CryptoListEvent {
-  const factory _GetCryptoList({required final int pageKey}) =
-      _$GetCryptoListImpl;
+  const factory _GetCryptoList(
+      {required final int pageKey, final bool isForced}) = _$GetCryptoListImpl;
 
   @override
   int get pageKey;
+  @override
+  bool get isForced;
   @override
   @JsonKey(ignore: true)
   _$$GetCryptoListImplCopyWith<_$GetCryptoListImpl> get copyWith =>

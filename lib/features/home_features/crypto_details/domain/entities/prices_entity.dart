@@ -10,7 +10,7 @@ class PricesEntity with _$PricesEntity {
   }) = _PricesEntity;
 
   factory PricesEntity.example() =>
-      PricesEntity(prices: List.generate(24, (index) => [index.toDouble(), 5]));
+      PricesEntity(prices: List.generate(24, (index) => [index.toDouble(), 0]));
 
   factory PricesEntity.fromJson(Map<String, dynamic> json) =>
       _$PricesEntityFromJson(json);

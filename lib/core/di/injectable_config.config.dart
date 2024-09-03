@@ -25,6 +25,8 @@ import 'package:crypto_app/features/home_features/crypto_list/domain/usecases/ge
     as _i400;
 import 'package:crypto_app/features/home_features/crypto_list/domain/usecases/get_trending_crypto_list_usecase.dart'
     as _i435;
+import 'package:crypto_app/features/home_features/home/presentation/bloc/user_balance/cubit/user_balance_cubit.dart'
+    as _i315;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 
@@ -39,6 +41,7 @@ extension GetItInjectableX on _i174.GetIt {
       environment,
       environmentFilter,
     );
+    gh.singleton<_i315.UserBalanceCubit>(() => _i315.UserBalanceCubit());
     gh.lazySingleton<_i4.DioFactory>(() => _i4.DioFactoryImpl());
     gh.lazySingleton<_i718.DetailsDatasource>(
         () => _i718.DetailsDatasourceImpl(dioFactory: gh<_i4.DioFactory>()));

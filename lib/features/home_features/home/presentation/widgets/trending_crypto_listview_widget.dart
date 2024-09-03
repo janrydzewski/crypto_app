@@ -1,10 +1,13 @@
 import 'package:crypto_app/core/constants/margins.dart';
+import 'package:crypto_app/core/extenstions/currency_extenstion.dart';
 import 'package:crypto_app/core/extenstions/style_extenstion.dart';
 import 'package:crypto_app/core/router/routes.dart';
 import 'package:crypto_app/core/theme/styles/box_styles.dart';
 import 'package:crypto_app/features/home_features/crypto_list/domain/entities/trending_crypto_entity.dart';
+import 'package:crypto_app/features/home_features/home/presentation/bloc/user_balance/cubit/user_balance_cubit.dart';
 import 'package:crypto_app/shared/custom_cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 class TrendingCryptoListViewWidget extends StatelessWidget {
@@ -65,7 +68,13 @@ class _ListViewElementWidget extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Text(
-                        "${trendingCrypto.trendingCryptoData.price.toStringAsFixed(2)}\$",
+                        context.watch<UserBalanceCubit>().state.currency.format(
+                            trendingCrypto.trendingCryptoData.price *
+                                context
+                                    .watch<UserBalanceCubit>()
+                                    .state
+                                    .currency
+                                    .currencyRate),
                         style: context.titleLarge),
                     Text(
                       "${trendingCrypto.trendingCryptoData.priceChangePercentage['usd'].toStringAsFixed(2)}%",

@@ -17,4 +17,11 @@ extension GoRouterExtension on GoRouter {
     }
     return false;
   }
+
+  bool get displayCurrencyChange {
+    if (location() == RoutesK.home || location() == RoutesK.cryptoList) {
+      return true;
+    }
+    return false;
+  }
 }
