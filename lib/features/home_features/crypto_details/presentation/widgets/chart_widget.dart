@@ -48,7 +48,7 @@ class ChartWidget extends StatelessWidget {
       minX: 0,
       maxX: prices.length.toDouble() - 1,
       minY: getMinY.toDouble(),
-      maxY: isLoaded ? getMaxY.toDouble() : 10000,
+      maxY: isLoaded ? getMaxY.toDouble() : 1,
       lineBarsData: [
         LineChartBarData(
           spots: prices.asMap().entries.map((entry) {
@@ -84,31 +84,31 @@ class ChartWidget extends StatelessWidget {
     );
   }
 
-  int get getMinX {
+  double get getMinX {
     return prices.prices
         .map((e) => e[0])
         .reduce((a, b) => a < b ? a : b)
-        .toInt();
+        .toDouble();
   }
 
-  int get getMaxX {
+  double get getMaxX {
     return prices.prices
         .map((e) => e[0])
         .reduce((a, b) => a > b ? a : b)
-        .toInt();
+        .toDouble();
   }
 
-  int get getMinY {
+  double get getMinY {
     return prices.prices
         .map((e) => e[1])
         .reduce((a, b) => a < b ? a : b)
-        .toInt();
+        .toDouble();
   }
 
-  int get getMaxY {
+  double get getMaxY {
     return prices.prices
         .map((e) => e[1])
         .reduce((a, b) => a > b ? a : b)
-        .toInt();
+        .toDouble();
   }
 }

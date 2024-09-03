@@ -29,7 +29,7 @@ class DetailsWidget extends StatelessWidget {
         ),
         Text(
           context.watch<UserBalanceCubit>().state.currency.format(cryptoDetails
-                  .marketData.currentPrice['usd'] *
+                  .marketData.currentPrice['usd'] /
               context.watch<UserBalanceCubit>().state.currency.currencyRate),
           style: context.displaySmall,
         ),

@@ -69,7 +69,7 @@ class _ListViewElementWidget extends StatelessWidget {
                   children: [
                     Text(
                         context.watch<UserBalanceCubit>().state.currency.format(
-                            trendingCrypto.trendingCryptoData.price *
+                            trendingCrypto.trendingCryptoData.price /
                                 context
                                     .watch<UserBalanceCubit>()
                                     .state
