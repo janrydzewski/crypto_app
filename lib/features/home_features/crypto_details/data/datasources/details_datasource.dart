@@ -6,7 +6,9 @@ import 'package:crypto_app/features/home_features/crypto_details/domain/entities
 import 'package:injectable/injectable.dart';
 
 abstract class DetailsDatasource {
+  // Function to get crypto details - CryptoDetailsEntity
   Future<CryptoDetailsEntity> getCryptoDetails(String cryptoId);
+  // Function to get crypto chart data - PricesEntity
   Future<PricesEntity> getCryptoChartData(
     String cryptoId,
     ChartDataEntity chartDataEntity,
@@ -19,6 +21,7 @@ class DetailsDatasourceImpl implements DetailsDatasource {
 
   DetailsDatasourceImpl({required this.dioFactory});
 
+  //Implementation of the function to get crypto details
   @override
   Future<CryptoDetailsEntity> getCryptoDetails(String cryptoId) async {
     try {
@@ -30,6 +33,7 @@ class DetailsDatasourceImpl implements DetailsDatasource {
     }
   }
 
+  //Implementation of the function to get crypto chart data
   @override
   Future<PricesEntity> getCryptoChartData(
       String cryptoId, ChartDataEntity chartDataEntity) async {

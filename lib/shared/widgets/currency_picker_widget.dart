@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
+// Function to build the currency picker widget
 Future<T?> currencyPickerWidget<T>(
   BuildContext appContext,
   List<CurrencyEntity> items,

@@ -2,6 +2,7 @@ import 'package:crypto_app/core/constants/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
+// Widget to build the loading widget
 class LoadingWidget extends StatelessWidget {
   const LoadingWidget({super.key});
 

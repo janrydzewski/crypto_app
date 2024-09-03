@@ -13,6 +13,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 
+// Widget to build the list view of the crypto list
 class CryptoListViewWidget extends StatefulWidget {
   final List<CryptoEntity> cryptoList;
   const CryptoListViewWidget({super.key, required this.cryptoList});
@@ -26,12 +27,14 @@ class _CryptoListViewWidgetState extends State<CryptoListViewWidget> {
 
   @override
   void initState() {
+    // Add listener to the scroll controller
     Global.scrollController!.addListener(listener);
     super.initState();
   }
 
   @override
   void dispose() {
+    // Remove listener from the scroll controller
     Global.scrollController!.removeListener(listener);
     super.dispose();
   }
@@ -56,6 +59,7 @@ class _CryptoListViewWidgetState extends State<CryptoListViewWidget> {
     );
   }
 
+  // Function to listen to the scroll controller
   void listener() {
     final maxScroll = Global.scrollController!.position.maxScrollExtent;
     final currentScroll = Global.scrollController!.offset;
@@ -72,6 +76,7 @@ class _CryptoListViewWidgetState extends State<CryptoListViewWidget> {
   }
 }
 
+// Private widget to build the list view element
 class _ListViewElementWidget extends StatelessWidget {
   final CryptoEntity crypto;
   const _ListViewElementWidget({required this.crypto});
@@ -132,6 +137,7 @@ class _ListViewElementWidget extends StatelessWidget {
   }
 }
 
+// Loading widget
 class _LoadingWidget extends StatelessWidget {
   const _LoadingWidget();
 

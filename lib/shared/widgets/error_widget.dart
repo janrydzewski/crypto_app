@@ -4,6 +4,7 @@ import 'package:crypto_app/core/network/error/failures.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
+// Widget to build the error widget
 class CustomErrorWidget extends StatelessWidget {
   final Failure failure;
   const CustomErrorWidget({super.key, required this.failure});

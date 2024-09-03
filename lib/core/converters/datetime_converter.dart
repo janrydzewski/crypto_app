@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+// This converter is used to convert DateTime to int and int to DateTime
 class DatetimeConverter implements JsonConverter<DateTime, int> {
   const DatetimeConverter();
 

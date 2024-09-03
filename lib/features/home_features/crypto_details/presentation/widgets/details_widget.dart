@@ -8,6 +8,7 @@ import 'package:crypto_app/shared/custom_cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+// Widget to build the view of the details page
 class DetailsWidget extends StatelessWidget {
   final CryptoDetailsEntity cryptoDetails;
   const DetailsWidget({super.key, required this.cryptoDetails});
@@ -41,6 +42,7 @@ class DetailsWidget extends StatelessWidget {
     );
   }
 
+  // Function to build the percentage
   Widget _buildPercentage(BuildContext context) => Container(
         padding: MarginsK.h10v4,
         decoration: BoxDecoration(

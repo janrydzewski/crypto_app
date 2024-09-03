@@ -3,10 +3,12 @@ import 'package:crypto_app/features/home_features/crypto_details/presentation/wi
 import 'package:crypto_app/features/home_features/crypto_details/presentation/widgets/pick_interval_widget.dart';
 import 'package:flutter/material.dart';
 
+// Widget to display the timeline chart
 class TimelineChartWidget extends StatelessWidget {
   final PricesEntity prices;
   final bool isLoaded;
-  const TimelineChartWidget({super.key, required this.prices, required this.isLoaded});
+  const TimelineChartWidget(
+      {super.key, required this.prices, required this.isLoaded});
 
   @override
   Widget build(BuildContext context) {

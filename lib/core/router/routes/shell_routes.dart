@@ -11,6 +11,7 @@ import 'package:go_router/go_router.dart';
 final homeNavigatorKey = GlobalKey<NavigatorState>();
 final listNavigatorKey = GlobalKey<NavigatorState>();
 
+// Main App routes with the shell and bottom navigation
 final StatefulShellRoute shellRoutes = StatefulShellRoute.indexedStack(
   parentNavigatorKey: rootNavigatorKey,
   builder: (context, state, navigationShell) {
@@ -25,6 +26,7 @@ final StatefulShellRoute shellRoutes = StatefulShellRoute.indexedStack(
   ],
 );
 
+// Home branch
 final StatefulShellBranch homeBranches =
     StatefulShellBranch(navigatorKey: homeNavigatorKey, routes: [
   GoRoute(
@@ -33,6 +35,7 @@ final StatefulShellBranch homeBranches =
   ),
 ]);
 
+// List branch
 final StatefulShellBranch listBranches =
     StatefulShellBranch(navigatorKey: listNavigatorKey, routes: [
   GoRoute(

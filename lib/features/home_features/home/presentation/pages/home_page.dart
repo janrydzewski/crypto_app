@@ -59,12 +59,14 @@ class _HomeView extends StatelessWidget {
     );
   }
 
+  // Function to build the balance of user account
   _buildBalance() => BlocBuilder<UserBalanceCubit, UserBalanceState>(
         builder: (context, state) {
           return UserBalanceWidget(state: state);
         },
       );
 
+  // Function to build the list view of trending crypto and skeleton
   _buildListView() =>
       BlocBuilder<TrendingCryptoListBloc, TrendingCryptoListState>(
         builder: (context, state) {

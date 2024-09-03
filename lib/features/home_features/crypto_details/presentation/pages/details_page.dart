@@ -57,6 +57,7 @@ class _DetailsView extends StatelessWidget {
     );
   }
 
+  // Function to build the details view and skeleton
   _buildView() {
     return BlocBuilder<CryptoDetailsBloc, CryptoDetailsState>(
       builder: (context, state) {
@@ -80,6 +81,7 @@ class _DetailsView extends StatelessWidget {
     );
   }
 
+  // Function to build the chart of the details page
   _buildChart() {
     return BlocBuilder<ChartBloc, ChartState>(
       builder: (context, state) {

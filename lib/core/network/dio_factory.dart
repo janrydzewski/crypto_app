@@ -28,7 +28,8 @@ class DioFactoryImpl extends DioFactory {
   late Dio _dio = getDio();
 
   DioFactoryImpl();
-
+  
+  // Function to get the Dio instance
   @override
   Dio getDio({String? baseUrl, Map<String, dynamic>? headers}) =>
       Dio(BaseOptions(
@@ -44,6 +45,7 @@ class DioFactoryImpl extends DioFactory {
               status! >= HttpStatus.ok && status <= HttpStatus.imUsed))
         ..interceptors.addAll([]);
 
+  
   @override
   Future<Map<String, dynamic>> get(
     String route, {

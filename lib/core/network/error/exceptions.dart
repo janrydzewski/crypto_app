@@ -1,3 +1,5 @@
+
+// All the exceptions that can be thrown by the application
 class AuthException implements Exception {}
 
 class StorageException implements Exception {}

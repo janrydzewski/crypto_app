@@ -3,6 +3,7 @@ import 'package:crypto_app/core/router/routes/shell_routes.dart';
 import 'package:crypto_app/features/other_features/loading/presentation/pages/loading_page.dart';
 import 'package:go_router/go_router.dart';
 
+// List of all routes
 final List<RouteBase> routes = [
   GoRoute(
     path: RoutesK.loading,

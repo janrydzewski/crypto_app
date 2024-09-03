@@ -14,6 +14,7 @@ class CryptoDetailsBloc extends Bloc<CryptoDetailsEvent, CryptoDetailsState> {
     on<_GetCryptoDetails>(_onGetCryptoDetails);
   }
 
+  // Function to get crypto details
   _onGetCryptoDetails(
       _GetCryptoDetails event, Emitter<CryptoDetailsState> emit) async {
     emit(const _Loading());

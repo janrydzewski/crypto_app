@@ -4,6 +4,7 @@ import 'package:crypto_app/features/home_features/crypto_list/domain/repositorie
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 
+// Usecase to get trending crypto list
 @LazySingleton()
 class GetTrendingCryptoListUsecase {
   final CryptoListRepository trendingListRepository;

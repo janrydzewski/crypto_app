@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
+// Widget to build the list view of the trending crypto list
 class TrendingCryptoListViewWidget extends StatelessWidget {
   final List<TrendingCryptoEntity> trendingCryptoList;
   const TrendingCryptoListViewWidget(
@@ -29,6 +30,7 @@ class TrendingCryptoListViewWidget extends StatelessWidget {
   }
 }
 
+// Private widget to build the list view element
 class _ListViewElementWidget extends StatelessWidget {
   final TrendingCryptoEntity trendingCrypto;
   const _ListViewElementWidget({required this.trendingCrypto});

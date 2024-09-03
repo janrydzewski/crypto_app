@@ -7,8 +7,10 @@ import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 
 abstract class CryptoListRepository {
+  // Function to get crypto list - List<CryptoEntity>
   Future<Either<Failure, List<CryptoEntity>>> getCryptoList(
       CryptoListParamEntity cryptoListParam);
+  // Function to get trending crypto list - List<TrendingCryptoEntity>
   Future<Either<Failure, List<TrendingCryptoEntity>>> getTrendingCryptoList();
 }
 
@@ -18,6 +20,7 @@ class CryptoListRepositoryImpl extends CryptoListRepository {
 
   CryptoListRepositoryImpl({required this.cryptoListDatasource});
 
+  // Implementation of the function to get crypto list
   @override
   Future<Either<Failure, List<CryptoEntity>>> getCryptoList(
       CryptoListParamEntity cryptoListParam) async {
@@ -30,6 +33,7 @@ class CryptoListRepositoryImpl extends CryptoListRepository {
     }
   }
 
+  // Implementation of the function to get trending crypto list
   @override
   Future<Either<Failure, List<TrendingCryptoEntity>>>
       getTrendingCryptoList() async {

@@ -6,6 +6,7 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+// Widget to build the chart
 class ChartWidget extends StatelessWidget {
   final PricesEntity prices;
   final bool isLoaded;
@@ -26,6 +27,7 @@ class ChartWidget extends StatelessWidget {
     );
   }
 
+  // Function to build the chart data
   LineChartData mainData(
       final List<List<double>> prices, BuildContext context, bool isLoaded) {
     final currency = context.watch<UserBalanceCubit>().state.currency;

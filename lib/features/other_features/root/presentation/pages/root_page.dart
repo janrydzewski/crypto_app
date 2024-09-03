@@ -27,6 +27,7 @@ class _RootView extends StatelessWidget {
     return BlocListener<NetworkConnectionCubit, NetworkConnectionState>(
       listener: (context, state) async {
         if (state.connectionStatus == ConnectionStatus.disconnected) {
+          //TODO uncomment on release version - emulator has no internet connection each run on start
           // connectionLostWidget(context);
         }
       },

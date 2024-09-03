@@ -28,18 +28,20 @@ class ChartBloc extends Bloc<ChartEvent, ChartState> {
       : super(const _Initial()) {
     on<_GetChartData>(_onGetChartData);
 
+    // Listen to the interval bloc stream
     _intervalSubscription = _intervalBloc.stream.listen((state) {
       state.when(
           data: (interval) =>
               add(_GetChartData(cryptoId: cryptoId, days: interval.days)));
-
-      _userBalanceSubscription = _userBalanceCubit.stream.listen((state) {
-        add(_GetChartData(
-            cryptoId: cryptoId, days: _intervalBloc.state.interval.days));
-      });
+    });
+    // Listen to the user balance cubit stream
+    _userBalanceSubscription = _userBalanceCubit.stream.listen((state) {
+      add(_GetChartData(
+          cryptoId: cryptoId, days: _intervalBloc.state.interval.days));
     });
   }
 
+  // Function to get chart data
   _onGetChartData(_GetChartData event, Emitter<ChartState> emit) async {
     emit(const _Loading());
 

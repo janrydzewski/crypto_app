@@ -12,10 +12,12 @@ class UserBalanceCubit extends HydratedCubit<UserBalanceState> {
       : super(UserBalanceState(
             userBalance: 1000, currency: CurrencyEntity.usd()));
 
+  // Function to increase balance
   void increaseBalance() {
     emit(state.copyWith(userBalance: state.userBalance + 100));
   }
 
+  // Function to decrease balance
   void decreaseBalance() {
     if (state.userBalance - 100 < 0) {
       emit(state.copyWith(userBalance: 0));
@@ -24,6 +26,7 @@ class UserBalanceCubit extends HydratedCubit<UserBalanceState> {
     }
   }
 
+  // Function to change currency
   void changeCurrency(CurrencyEntity currency) {
     emit(state.copyWith(currency: currency));
   }

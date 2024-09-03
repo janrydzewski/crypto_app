@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
+// Global scaffold widget for the app
 class CryptoScaffold extends StatefulWidget {
   final Widget body;
   final String? _title;

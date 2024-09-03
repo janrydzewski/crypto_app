@@ -33,6 +33,7 @@ class _CryptoListView extends StatelessWidget {
     );
   }
 
+  // Function to build the crypto list view and skeleton
   _buildListView() {
     return BlocBuilder<CryptoListBloc, CryptoListState>(
       builder: (context, state) {
